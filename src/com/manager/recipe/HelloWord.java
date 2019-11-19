@@ -1,5 +1,6 @@
 package com.manager.recipe;
 
+
 public class HelloWord {
 
 	public static void main(String[] args) {

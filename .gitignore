@@ -27,7 +27,18 @@ nb-configuration.xml
 .classpath
 .project
 .settings/
-
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
 
 # Maven
 log/
