@@ -1,0 +1,99 @@
+<script>
+function  inputFileDetails(surce,destination){
+  var x = document.getElementById(surce);
+  var txt = "";
+  if ('files' in x) {
+    if (x.files.length == 0) {
+      txt = "Selezioa uno o più file.";
+    } else {
+      for (var i = 0; i < x.files.length; i++) {
+        var file = x.files[i];
+        if ('name' in file) {
+          txt += "Nome: " + file.name + " -- ";
+        }
+        if ('size' in file) {
+          txt += "Dimensione: " + file.size + " bytes ";
+        }
+      }
+    }
+  } 
+  else {
+    if (x.value == "") {
+      txt += "Seleziona uno o più file.";
+    } else {
+      txt += "The files property is not supported by your browser!";
+      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+    }
+  }
+  document.getElementById(destination).innerHTML = txt;
+}
+		</script>
+<form method="post" action="AddProductServlet"enctype="multipart/form-data" name="AddProduct" id="addProduct">
+  <div class="form-group row">
+    <label for="nomeProdotto" class="col-sm-6 col-form-label">Nome Prodotto</label>
+    <div class="col-12">
+      <input  type="text" class="form-control" id="nomeProdotto" placeholder="Nome Prodotto">
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="descrizioneBreveProdotto" class="col-sm-6 col-form-label">Descrizione Breve</label>
+    <div class="col-12">
+      <textarea  id="descrizioneBreveProdotto" name="descrizioneBreveProdotto" class="form-control">Scrivi Quì</textarea>
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="descrizioneDettagliataProdotto" class="col-sm-6 col-form-label">Descrizione Lunga</label>
+    <div class="col-12">
+      <textarea  id="descrizioneDettagliataProdotto" name="descrizioneDettagliataProdotto" class="form-control">Sceivi Quì</textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+	    <div class="input-group mb-3 col-12">
+			<label for="image_thumbnail_uploads"><i class="fas fa-upload fa-3x"></i></label>
+			<p id="dettagliInputFile2">Scegli un'immagine thumbnai per il prodottol (JPG,PNG)</p>
+			<input style="display:none;" onchange="inputFileDetails('image_thumbnail_uploads','dettagliInputFile2');" type="file" id="image_thumbnail_uploads" name="image_thumbnail_uploads" accept=".jpg, .jpeg, .png">	 
+		</div>
+  </div>
+  <div class="form-group row">
+	    <div class="input-group mb-3 col-12">
+			<label  for="imgFullProdotto"><i class="fas fa-upload fa-3x"></i></label>
+			<p id="dettagliInputFile3">Scegli un'immagina full per il prodotto (JPG,PNG)</p>
+			<input style="display:none;" onchange="inputFileDetails('imgFullProdotto','dettagliInputFile3');" type="file" id="imgFullProdotto" name="imgFullProdotto" accept=".jpg, .jpeg, .png">	 
+		</div>
+  </div>
+  <div class="form-group row">
+    <label for="prezzoProdotto" class="col-sm-6 col-form-label">Prezzo Prodotto</label>
+    <div class="col-12">
+      <input  id="prezzoProdotto" name="prezzoProdotto" type="text" class="form-control"  placeholder="prezzo Prodotto">
+    </div>
+  </div>
+   <div class="form-group row">
+		  <div class="col-md-4">
+		  	  <label class="col-sm-4  col-form-label" for="categoriaProdotto">Categoria</label>
+			  <select class="form-control" name="Categoria_idCategoria" id="Categoria_idCategoria">
+			    
+			  </select>
+		  </div>
+		  <div class="col-md-4">
+		  	  <label class="col-sm-4 col-form-label" for="unitaMisuraProdotto">Misura</label>
+			  <select id="unita_misura" class="form-control" name="unita_misura">
+			    <option value="ml">ml</option>
+			    <option value="cl">cl</option>
+			    <option value="Lt">Lt</option>
+		 	    <option value="Kg">Kg</option>
+			  </select>
+		  </div>
+    	  <div class="col-md-4">
+    	  	    <label class="col-sm-4  col-form-label"for="ValoreMisurato" ">Valore</label>
+          		<input  type="text" id="ValoreMisurato" name="valore_misurato" class="form-control"  placeholder="Valore">
+    	  </div>
+		  
+	</div> 
+  <div class="form-group row">
+    <div class="col-12">
+      <button type="submit" id="btnProductAdd" class="btn bg-sea-green" style="color:white; width:100%">AGGIUNGI</button>
+    </div>
+  </div>
+  
+  
+</form>
