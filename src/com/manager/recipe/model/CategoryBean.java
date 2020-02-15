@@ -6,7 +6,6 @@ public class CategoryBean  implements Serializable{
 
 private static final long serialVersionUID = -8549592960594887791L;
 private int idCategoria;
-private String iconaCategoria;
 private String nomeCategoria;
 private String descrizioneCategoria;
 
@@ -19,12 +18,6 @@ public int getIdCategoria() {
 }
 public void setIdCategoria(int idCategoria) {
 	this.idCategoria = idCategoria;
-}
-public String getIconaCategoria() {
-	return iconaCategoria;
-}
-public void setIconaCategoria(String iconaCategoria) {
-	this.iconaCategoria = iconaCategoria;
 }
 public String getNomeCategoria() {
 	return nomeCategoria;

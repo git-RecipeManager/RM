@@ -17,7 +17,7 @@ import com.manager.recipe.model.LoginDAO;
 
 
 
-@WebServlet("/Secured")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -28,12 +28,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Step 1:  Set content type header response
 		response.setContentType("text/html");
-		PrintWriter pw =  response.getWriter();
+		ServletContext app = getServletContext();
 		//	Step 2: Retrieve post parameter and initialize some variable
-		String userName = request.getParameter("user");
-		String email = request.getParameter("user");
+		String login = request.getParameter("user");
 		String password = null;
-		String role = request.getParameter("role");
 		LoginBean sb = new LoginBean();
 		LoginDAO sldao = new LoginDAO();
 		Prompt pp = new Prompt();
@@ -46,31 +44,23 @@ public class LoginServlet extends HttpServlet {
 			
 		}
 		// Step 3:  Set Bean
-		sb.setEmail(email);
+		if(login.contains("@"))
+		sb.setEmail(login);
+		else sb.setUsername(login);
 		sb.setPassword(password);
-		sb.setUserName(userName);
 		// Step 4:  Validate data filled from user customer or admin
 		sb=sldao.validateUser(sb);
 		// login fallito da parte dell'amministratore
 		if(sb == null) {
-			
-			pp.setMessage("Passwor o Username errati");
-			request.setAttribute("prompt", pp);
-			request.getRequestDispatcher("WEB-INF/jsp/dashboard/login.jsp").forward(request, response);
-			
-			//response.sendRedirect("/extraordinary-italy.com/secured/login.jsp");
-		}
-		else {
-			pp.setMessage("You are accessed your  private area successfully");
-			HttpSession session = request.getSession(true);
-			session.setAttribute("prompt", pp);
-			session.setAttribute("securedBean", sb);
-			session.setMaxInactiveInterval(3600);
-			request.getRequestDispatcher("WEB-INF/jsp/dashboard/backend.jsp").forward(request, response);
-			//response.sendRedirect("/extraordinary-italy.com/secured/backend.jsp");
-		}
-		
-		
+				app.setAttribute("message", "user o password errata");
+				request.getRequestDispatcher("WEB-INF/jsp/site/index.jsp").forward(request, response);
+
+			}else {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("customerBean", sb);
+				session.setAttribute("message","Benvenuto ");
+				request.getRequestDispatcher("WEB-INF/jsp/site/index.jsp").forward(request, response);
+			}
 		
 		
 	}

@@ -1,5 +1,5 @@
-<%@ page import="com.extraordinary.italy.model.LoginBean" %>
-<%@ page import="com.extraordinary.italy.model.ListingProductBean" %>
+<%@ page import="com.manager.recipe.model.LoginBean" %>
+<%@ page import="com.manager.recipe.model.ListingProductBean" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
     pageEncoding="utf-8"  session="true" %>

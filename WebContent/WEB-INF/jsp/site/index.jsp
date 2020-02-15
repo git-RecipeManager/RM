@@ -1,31 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
-    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" session="true" %>
+    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" import="java.time.LocalDate" session="true" %>
 <%
 		Integer idUser = 0;
 		String email = "";
-  		String name = "";
+  		String fullName = "";
   		String sms = "";
-  		String surname = "";
-  		String tel1 ="";
-  		String tel2 ="";
-  		String indirizzo = "";
-  		String role = "";
-  		String codIstat= "";
+  		String cel ="";
+  		LocalDate dataDiNascita = null;
+  		Integer role = 1;
+		
 		Boolean flag = false;	
-		if ((session.getAttribute("customerBean") != null) && (session.getAttribute("message") != null)) {
+		if ((session.getAttribute("customerBean") != null)) {
 				LoginBean cb = (LoginBean) session.getAttribute("customerBean");
-				sms = (String)session.getAttribute("message");
 		 		idUser = cb.getIdUser();
 				email = cb.getEmail();
-		 		name = cb.getName();
-		 		surname = cb.getSurname();
-		 		tel1 = cb.getTelefono1();
-		 		tel2 = cb.getTelefono2();
-		 		indirizzo = cb.getIndirizzo();
-		 		role = cb.getRole();
-		 		codIstat = cb.getCittaIstat();
-		 					 		
+		 		fullName = cb.getFullName();
+		 		cel = cb.getCellulare();
+		 		dataDiNascita = cb.getDataDiNascita();
+		 		role = cb.getRole();		 					 		
 			}		
+		if(session.getAttribute("message") != null)
+		sms = (String)session.getAttribute("message");
    %>
 <!doctype html>
 <html lang="en">
@@ -47,7 +42,7 @@
   <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; display:none" class=" bg-sea-green fg.light-grey"><%= sms %></p>
     <!-- MENU ALTO -->
 	<nav class="navbar navbar-expand-sm" id="navbar-nav-1">  
-	  <!--  sx  Campo di ricerca, telefono, sèedizioni gratis -->
+	  <!--  sx  Campo di ricerca, telefono, spedizioni gratis -->
 	  <ul class="navbar-nav">
 		  <li>
 			  	 <form class="form-inline" action="/action_page.php">	
@@ -66,9 +61,9 @@
    				    <i class="fas fa-user-cog fa-2x"></i>
   				 </a>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuUserSetting">
-				    <a class="dropdown-item" href="#">Registrati</a>
 				    <a class="dropdown-item" href="http://localhost:8080/extraordinary-italy.com/?page=profile">Profilo</a>
-				    <a class="dropdown-item" href="CostumerLogout">Logout</a>
+				    <a class="dropdown-item" href="add_recipe.jsp">Aggiungi Ricetta</a>
+				    <a class="dropdown-item" href="LogoutServlet">Logout</a>
 				  </div>
 			 </div>
 		</li>
@@ -147,12 +142,12 @@
                <div class="row">
                 	<div class="col-md-6 login-form-1">
                     	<h3>Accedi</h3>
-                    	<form   action="CustomerLoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
+                    	<form   action="LoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
 	                        <div class="form-group">
 	                            <input type="hidden" class="form-control"  name="role" value="customer" />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="text" class="form-control" placeholder="La tua Email" name="email" value="" />
+	                            <input type="text" class="form-control" placeholder="La tua Email o Username" name="user" value="" />
 	                        </div>
 	                        <div class="form-group">
 	                            <input type="password" class="form-control" placeholder="La tua Password" name="password" value="" />
@@ -172,21 +167,21 @@
                      </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Registrati</h3>
-                    <form action="SignUpControlServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
-                    	<div class="form-group">
-                    	    <input type="text" class="form-control" placeholder="Inserisci Nome e Cognome" name="fullName" value="" />
+                    <form action="RegistrationServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Inserisci un Username" name="username" value="" />
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Inserisci una Mail" name="email" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" id="registationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
+                            <input type="password" id="registrationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Re-Inserisci Password" name="password2" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="submit" class="btnSubmit" value="Registrati" />
                         </div>
                     </form>
                 </div>

@@ -44,7 +44,6 @@ public class Category extends HttpServlet {
 			
 			// Step 4:  Set Bean
 			bean.setDescrizioneCategoria(descrizioneCategoria);
-			bean.setIconaCategoria(iconaCategoria);
 			bean.setNomeCategoria(nomeCategoria);
 			
 			// Step 4: addCategory

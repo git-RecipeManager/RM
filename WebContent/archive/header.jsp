@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
-    pageEncoding="utf-8" import="com.extraordinary.italy.model.LoginBean" session="true" %>
+    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" session="true" %>
 <%
 		String email = "";
-  		String name = "";
+  		String fullName = "";
   		String sms = "";
 		Boolean flag = false;	
 		if ((session.getAttribute("customerBean") != null) && (session.getAttribute("message") != null)) {
 				LoginBean cb = (LoginBean) session.getAttribute("customerBean");
 				sms = (String)session.getAttribute("message");
 		 		email = cb.getEmail();
-		 		name = cb.getName();
+		 		fullName = cb.getFullName();
 		 		
 			}else{
 				flag = true;

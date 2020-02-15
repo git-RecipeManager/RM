@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
-    pageEncoding="utf-8" import="com.extraordinary.italy.model.LoginBean" session="true" %>
+    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" session="true" %>
 <%
 		Integer idUser = 0;
 		String email = "";

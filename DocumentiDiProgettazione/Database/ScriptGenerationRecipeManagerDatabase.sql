@@ -14,6 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema RECIPEMANAGER
 -- -----------------------------------------------------
+drop schema `RECIPEMANAGER`;
 CREATE SCHEMA IF NOT EXISTS `RECIPEMANAGER` DEFAULT CHARACTER SET utf8 ;
 USE `RECIPEMANAGER` ;
 
@@ -32,11 +33,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `RECIPEMANAGER`.`Utente` (
   `idUtente` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `cognome` VARCHAR(45) NOT NULL,
+  `fullName` VARCHAR(90),
+  `username` VARCHAR(90),
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(256) NOT NULL,
-  `dattaDiNAscita` DATE NULL,
+  `dataDiNAscita` DATE NULL,
   `cellulare` VARCHAR(18) NULL,
   `Ruolo_idRuolo` INT NOT NULL,
   PRIMARY KEY (`idUtente`),
@@ -54,6 +55,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `RECIPEMANAGER`.`Ricetta` (
   `idRicetta` INT NOT NULL AUTO_INCREMENT,
+  `immagine` VARCHAR(300) NOT NULL,
   `titolo` VARCHAR(100) NOT NULL,
   `descrizione` LONGTEXT NOT NULL,
   `Utente_idUtente` INT NOT NULL,
@@ -75,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `RECIPEMANAGER`.`Ingrediente` (
   `nome` VARCHAR(45) NOT NULL,
   `metrica` VARCHAR(10) NOT NULL,
   `quantita` DECIMAL(3) NOT NULL,
-  `calorie` INT NOT NULL,
+  /*tolte le calorie*/
   PRIMARY KEY (`idIngrediente`))
 ENGINE = InnoDB;
 

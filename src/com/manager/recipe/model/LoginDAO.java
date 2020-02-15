@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 public class LoginDAO {
 
 	// Retrieve user data 
-	public LoginBean getUser(String email, String password) {
+	/*public LoginBean getUser(String email, String password) {
 		  	Connection con = null;
 		    PreparedStatement ps = null;
 		    ResultSet rs  = null;
@@ -35,56 +35,57 @@ public class LoginDAO {
 		    
 		return sb;
 		
-	}
+	}*/
 	
 	public LoginBean validateUser(LoginBean sb) {
 		Connection con = null;
 	    PreparedStatement ps = null;
 	    ResultSet rs  = null;
 	    String email = sb.getEmail();
+	    String username=sb.getUsername();
 	    String password = sb.getPassword();
-	    String userName = sb.getUserName();
-	    String role = sb.getRole();
-	    String nome = sb.getName();
-	    String cognome = sb.getSurname();
 	    try{  
 	    	
 	        con=DBManager.getConnection(); 
-	        String sql ="SELECT * FROM Cliente INNER JOIN datianagrafici ON  cliente.email = ?";
+	        String sql="";
+	        if(email!=null && email!="") {
+	        sql ="SELECT * FROM Utente WHERE email = ?";
 	        ps=con.prepareStatement(sql);  
 	        ps.setString(1, sb.getEmail());
+	        }
+	        else if(username!=null && username!=""){
+	        	sql ="SELECT * FROM Utente WHERE username = ?";
+	        	ps=con.prepareStatement(sql);  
+		        ps.setString(1, sb.getUsername());
+	        }else throw new Exception("Eccezioneee");
 	        rs=ps.executeQuery();
 	        if(rs.next()){
 	        	System.out.println(rs.getString("password"));
 	        	System.out.println(password);
 	        	System.out.println(rs.getString("email"));
 	        	System.out.println(email);
-	        	if((rs.getString("password").equals(password) &&rs.getString("email").equals(email)) ) {
-	        		System.out.println(rs.getInt("idCliente"));
-		        	System.out.println(rs.getString("nome"));
-		        	System.out.println(rs.getString("cognome"));
-		        	System.out.println(rs.getString("ruolo"));
-		        	System.out.println(rs.getString("userName"));
+	        	if(rs.getString("password").equals(password)) {
+	        		if(rs.getString("email").equals(email)||rs.getString("username").equals(username)) {
+	        		System.out.println(rs.getInt("idUtente"));
+		        	System.out.println(rs.getString("fullName"));
+		        	System.out.println(rs.getString("Ruolo_idRuolo"));
 		        	System.out.println(rs.getString("password"));
-		        	sb.setIdUser(rs.getInt("idCliente"));
-		        	sb.setName(rs.getString("nome"));
-		        	sb.setSurname(rs.getString("cognome"));
-		        	sb.setRole(rs.getString("ruolo"));
-		        	sb.setUserName(rs.getString("userName"));
+		        	sb.setIdUser(rs.getInt("idUtente"));
+		        	sb.setFullName(rs.getString("fullName"));
+		        	sb.setEmail(rs.getString("email"));
 		        	sb.setPassword(rs.getString("password"));
-		        	sb.setTelefono1(rs.getString("telefono1"));
-		        	sb.setTelefono2(rs.getString("telefono2"));
-		        	sb.setIndirizzo(rs.getString("indirizzo"));
-		        	 return sb;
+		        	if(rs.getDate("dataDiNascita")!=null)
+		        	sb.setDataDiNascita(rs.getDate("dataDiNascita"));
+		        	if(rs.getDate("cellulare")!=null)
+		        	sb.setCellulare(rs.getString("cellulare"));
+		        	sb.setRole(rs.getInt("Ruolo_idRuolo"));
+		        	return sb;
 	        	}
 	        	
-	        	  	
+	        	}
 	        }
-	       
-	       
-		
 	    }catch(Exception ex) {
-	    	System.out.println(ex);
+	    	ex.printStackTrace();
 	    }
 		return null;
 	}

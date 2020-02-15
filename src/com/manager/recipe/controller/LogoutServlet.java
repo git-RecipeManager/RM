@@ -14,18 +14,17 @@ import javax.servlet.http.HttpSession;
  *Raccoglie una richiesta da una pagina jsp di logout e lo 
  *fa invaidando la sessione che manteneva attivao il login
  */
-@WebServlet(description = "logaut servlet for backend administration area", urlPatterns = { "/BackLogout" })
+@WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+private static final long serialVersionUID = 1L;
+       
+   
+  
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		  HttpSession session=request.getSession();  
-          session.invalidate(); 
-          request.getRequestDispatcher("WEB-INF/jsp/dashboard/login.jsp").forward(request, response);
-	}
-
+        session.invalidate(); 
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+	}	
 }
