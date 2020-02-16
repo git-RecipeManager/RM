@@ -45,7 +45,7 @@
    	<title>Recipe Manager</title>
   </head>
   <body>
-  <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; display:none" class=" bg-sea-green fg.light-grey"><%= sms %></p>
+  <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; " class=" bg-sea-green fg.light-grey"><%= sms %></p>
     <!-- MENU ALTO -->
 	<nav class="navbar navbar-expand-sm" id="navbar-nav-1">  
 	  <!--  sx  Campo di ricerca, telefono, spedizioni gratis -->
@@ -75,66 +75,7 @@
 		</li>
 		<li class="nav-item">
 			<a href="#" id="btnUserLock" class="nav-link" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-lock fa-2x"></i></a>
-			
-		</li>
-		<li class="nav-item dropdown">
-			<a  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-shopping-cart fa-2x"></i> </a> 
-			<!-- Sub menu cart -->
-			<ul class="dropdown-menu">
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 1</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-					
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 2</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 3</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</li>
-	</ul><!-- end sub menu cart  -->
-	
-	
+
 		<!-- Sub menu login Modal -->
 <div id="loginModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -210,37 +151,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbar">
    <ul class="navbar-nav mr-auto">
-    
-    <li class="nav-item dropdown megamenu-li">
-     <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Birre</a>
-     <div class="dropdown-menu megamenu" aria-labelledby="dropdown02">
-      <div class="row" id="megamenucontent">
-       <div class="col-12 " style="margin-left:1em;">
-        <h5 class="fg-sea-green">Top Styles</h5>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g1" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g2" class="fg-dark-grey"></ul>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g3" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g4" class="fg-dark-grey"></ul>
-       </div>
-       <div class="col-12 " style="text-align:center; margin-top:1em;">
-        <h5 class="fg-sea-green" >LA NOSTRA OFFERTA</h5>
-        <p id="megaMenuPresantation" class="fg-light-grey"><!-- Qui testo dal file json --></p>
-       </div>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Confezioni Regalo</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Bicchieri</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Novità</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Promozioni</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Migliori piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Nuovi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Antichi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">I piatti piu commentati</a></li>
    </ul>
   </div>
  </div>

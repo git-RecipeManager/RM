@@ -7,35 +7,28 @@ import java.sql.ResultSet;
 public class LoginDAO {
 
 	// Retrieve user data 
-	/*public LoginBean getUser(String email, String password) {
+	public boolean updateUser(String fullName, String username, String cellulare, String indirizzo, int idUtente) {
 		  	Connection con = null;
 		    PreparedStatement ps = null;
-		    ResultSet rs  = null;
-		    LoginBean sb= new LoginBean();
+		    int rs  = 0;
 		    try{  
 		        con=DBManager.getConnection();  
-		        ps=con.prepareStatement("SELECT * FROM cliente, datianagrafici where email=? and password=?");  
-		        ps.setString(1, email);
-		        ps.setString(2, password);
-		        rs=ps.executeQuery();
-		        while(rs.next()){
-		        	sb.setIdUser(Integer.parseInt(rs.getString("idCliente")));
-		        	sb.setName(rs.getString("nome"));
-		        	sb.setSurname(rs.getString("cognome"));
-		        	sb.setEmail(rs.getString("email"));
-		        	sb.setRole(rs.getString("ruolo"));
-		        	sb.setUserName(rs.getString("username"));
-		        	sb.setPassword(rs.getString("password"));
+		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, username=?, cellulare=?, indirizzo=? where idUtente=?");  
+		        ps.setString(1, fullName);
+		        ps.setString(2, username);
+		        ps.setString(3, cellulare);
+		        ps.setString(4, indirizzo);
+		        ps.setInt(5, idUtente);
+		        rs=ps.executeUpdate();
+		        if(rs!=0) return true;
 		        
 		        }
-		      }catch(Exception ex) {
+		      catch(Exception ex) {
 		    	  System.out.println(ex);
 		      }
-		    
-		    
-		return sb;
+		    return false;
 		
-	}*/
+	}
 	
 	public LoginBean validateUser(LoginBean sb) {
 		Connection con = null;
@@ -76,7 +69,7 @@ public class LoginDAO {
 		        	sb.setPassword(rs.getString("password"));
 		        	if(rs.getString("indirizzo")!=null)
 		        	sb.setIndirizzo(rs.getString("indirizzo"));
-		        	if(rs.getDate("cellulare")!=null)
+		        	if(rs.getString("cellulare")!=null)
 		        	sb.setCellulare(rs.getString("cellulare"));
 		        	sb.setRole(rs.getInt("Ruolo_idRuolo"));
 		        	return sb;

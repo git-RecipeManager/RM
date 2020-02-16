@@ -6,6 +6,7 @@ String email = "";
 	String fullName = "";
 	String sms = "";
 	String cel ="";
+	String username="";
 	String indirizzo = "";
 	Integer role = 1;
 
@@ -15,6 +16,7 @@ if ((session.getAttribute("customerBean") != null)) {
  		idUser = cb.getIdUser();
 		email = cb.getEmail();
  		fullName = cb.getFullName();
+ 		username=cb.getUsername();
  		cel = cb.getCellulare();
  		indirizzo = cb.getIndirizzo();
  		role = cb.getRole();		 					 		
@@ -67,64 +69,9 @@ if ((session.getAttribute("customerBean") != null)) {
 		</li>
 		<li class="nav-item">
 			<a href="#" id="btnUserLock" class="nav-link" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-lock fa-2x"></i></a>
-			
 		</li>
-		<li class="nav-item dropdown">
-			<a  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-shopping-cart fa-2x"></i> </a> 
-			<!-- Sub menu cart -->
-			<ul class="dropdown-menu">
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 1</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-					
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 2</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 3</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</li>
-	</ul><!-- end sub menu cart  -->
+		</ul>	
+		
 	
 		<!-- Sub menu login Modal -->
 <div id="loginModal" class="modal fade" role="dialog">
@@ -194,43 +141,16 @@ if ((session.getAttribute("customerBean") != null)) {
 	</nav>
 	<nav class="navbar navbar-dark  navbar-expand-md bg-wine">	
 	 <div class="container">
-  <a class="navbar-brand" href="#">RecipeManager.com</a>
+  <a class="navbar-brand" href="index.jsp">RecipeManager.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbar">
    <ul class="navbar-nav mr-auto">
-    
-    <li class="nav-item dropdown megamenu-li">
-     <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Birre</a>
-     <div class="dropdown-menu megamenu" aria-labelledby="dropdown02">
-      <div class="row" id="megamenucontent">
-       <div class="col-12 " style="margin-left:1em;">
-        <h5 class="fg-sea-green">Top Styles</h5>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g1" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g2" class="fg-dark-grey"></ul>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g3" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g4" class="fg-dark-grey"></ul>
-       </div>
-       <div class="col-12 " style="text-align:center; margin-top:1em;">
-        <h5 class="fg-sea-green" >LA NOSTRA OFFERTA</h5>
-        <p id="megaMenuPresantation" class="fg-light-grey"><!-- Qui testo dal file json --></p>
-       </div>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Confezioni Regalo</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Bicchieri</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Novità</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Promozioni</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Migliori piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Nuovi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Antichi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">I piatti piu commentati</a></li>
    </ul>
   </div>
  </div>
@@ -273,46 +193,30 @@ if(request.getAttribute("main") == null){
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="ProfileServlet" method="post" id="registrationForm">
                       <div class="form-group">
-                          
+                          <input type="hidden" name="idUtente" value=<%=idUser%>>
                           <div class="col-xs-6">
                               <label class="fg-sea-green" for="first_name"><h4>Nome e Cognome</h4></label>
                               <input type="text" class="form-control" name="fullName" id="fullName" value="<%= fullName %>" >
                           </div>
                       </div>
-          			 <div class="form-group">
-                          
+                      <div class="form-group">
                           <div class="col-xs-6">
-                              <label class="fg-sea-green" for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" value="<%=email %>">
-                          </div>
+                             <label class="fg-sea-green" for="mobile"><h4>Username</h4></label>
+							 <input type="text" class="form-control" name="username" id="username" value="<%=username%>">                          </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label class="fg-sea-green" for="mobile"><h4>Cellulare</h4></label>
-							 <input type="text" class="form-control" name="mobile" id="mobile" value="<%=cel%>">                          </div>
+							 <input type="text" class="form-control" name="cellulare" id="cellulare" value="<%=cel%>">                          </div>
                       </div>
                      
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label class="fg-sea-green" for="email"><h4>Data di Nascita</h4></label>
-                              <input type="text" class="form-control" id="indirizzo" value=" <%= indirizzo %>">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label class="fg-sea-green" for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label class="fg-sea-green" for="password2"><h4>Conferma Password</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                              <label class="fg-sea-green" for="email"><h4>Indirizzo</h4></label>
+                              <input type="text" class="form-control" id="indirizzo" name="indirizzo" value=" <%= indirizzo %>">
                           </div>
                       </div>
                       <div class="form-group">

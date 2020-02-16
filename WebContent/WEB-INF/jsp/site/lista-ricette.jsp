@@ -82,64 +82,8 @@ sms = (String)session.getAttribute("message");
 		</li>
 		<li class="nav-item">
 			<a href="#" id="btnUserLock" class="nav-link" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-lock fa-2x"></i></a>
-			
 		</li>
-		<li class="nav-item dropdown">
-			<a  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-shopping-cart fa-2x"></i> </a> 
-			<!-- Sub menu cart -->
-			<ul class="dropdown-menu">
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 1</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-					
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 2</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-				<li  class="dropdown-item">
-					<div class="row">
-						<div class="col-3">
-							<img src="https://via.placeholder.com/64" alt="placeholder thumbnail" title="placeholder thumbnail" width="70" height="70"/>
-						</div>
-						<div class="col-6"> 
-							<h4>Heading 3</h4>
-							<span>25&euro;</span>
-						</div>
-						<div class="col-3">
-							<a class="fas fa-plus-square"></a> 
-							<a class="fas fa-minus-square"></a> 
-							<a class="far fa-trash-alt"></a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</li>
-	</ul><!-- end sub menu cart  -->
+	</ul>
 	
 	
 		<!-- Sub menu login Modal -->
@@ -155,12 +99,12 @@ sms = (String)session.getAttribute("message");
                <div class="row">
                 	<div class="col-md-6 login-form-1">
                     	<h3>Accedi</h3>
-                    	<form   action="CustomerLoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
+                    	<form   action="LoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
 	                        <div class="form-group">
 	                            <input type="hidden" class="form-control"  name="role" value="customer" />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="text" class="form-control" placeholder="La tua Email" name="email" value="" />
+	                            <input type="text" class="form-control" placeholder="La tua Email o Username" name="user" value="" />
 	                        </div>
 	                        <div class="form-group">
 	                            <input type="password" class="form-control" placeholder="La tua Password" name="password" value="" />
@@ -180,21 +124,21 @@ sms = (String)session.getAttribute("message");
                      </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Registrati</h3>
-                    <form action="SignUpControlServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
-                    	<div class="form-group">
-                    	    <input type="text" class="form-control" placeholder="Inserisci Nome e Cognome" name="fullName" value="" />
+                    <form action="RegistrationServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Inserisci un Username" name="username" value="" />
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Inserisci una Mail" name="email" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" id="registationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
+                            <input type="password" id="registrationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Re-Inserisci Password" name="password2" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="submit" class="btnSubmit" value="Registrati" />
                         </div>
                     </form>
                 </div>
@@ -217,37 +161,10 @@ sms = (String)session.getAttribute("message");
   </button>
   <div class="collapse navbar-collapse" id="navbar">
    <ul class="navbar-nav mr-auto">
-    
-    <li class="nav-item dropdown megamenu-li">
-     <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Birre</a>
-     <div class="dropdown-menu megamenu" aria-labelledby="dropdown02">
-      <div class="row" id="megamenucontent">
-       <div class="col-12 " style="margin-left:1em;">
-        <h5 class="fg-sea-green">Top Styles</h5>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g1" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g2" class="fg-dark-grey"></ul>
-       </div>
-       <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g3" class="fg-dark-grey"></ul>
-       </div>
-        <div  class="col-sm-6 col-lg-3">
-        <ul style="font-family: extraordinary-italy-text" id="beerStyles_g4" class="fg-dark-grey"></ul>
-       </div>
-       <div class="col-12 " style="text-align:center; margin-top:1em;">
-        <h5 class="fg-sea-green" >LA NOSTRA OFFERTA</h5>
-        <p id="megaMenuPresantation" class="fg-light-grey"><!-- Qui testo dal file json --></p>
-       </div>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Confezioni Regalo</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Bicchieri</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Novità</a></li>
-    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Promozioni</a></li>
+   <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Migliori piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link"href="#">Nuovi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">Antichi piatti</a></li>
+    <li class="nav-item  megamenu-li"><a class="nav-link" href="#">I piatti piu commentati</a></li>
    </ul>
   </div>
  </div>
