@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/custom.css">
     
-   	<title>Extraordinary-Italy</title>
+   	<title>Recipe Manager</title>
   </head>
   <body>
   <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; display:none" class=" bg-sea-green fg.light-grey"><%= sms %></p>
@@ -198,7 +198,7 @@
 	</nav>
 	<nav class="navbar navbar-dark  navbar-expand-md bg-wine">	
 	 <div class="container">
-  <a class="navbar-brand" href="#">ExtraordinaryItaly.com</a>
+  <a class="navbar-brand" href="#">recipemanager.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
   </button>
@@ -519,7 +519,8 @@ if(request.getAttribute("main") == null){
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script src="js/custom.js"></script>
     <% 
-if(session.getAttribute("message")!= null){%>
+if(session.getAttribute("message")!= null){ System.out.println(session.getAttribute("message"));%>
+
 <script>
 $( document ).ready(function() {
     $("#loginForm input[name='email']").val("");
@@ -532,7 +533,7 @@ $( document ).ready(function() {
 });
 </script>
 <%
-}else{%>
+}else{ System.out.print("message e vuoto");%>
 	
 	<script>
 $( document ).ready(function() {

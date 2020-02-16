@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/jsp/site/index.jsp").forward(request, response);
 
 			}else {
+				app.setAttribute("message", "user o password errata");
 				HttpSession session = request.getSession(true);
 				session.setAttribute("customerBean", sb);
 				session.setAttribute("message","Benvenuto ");
