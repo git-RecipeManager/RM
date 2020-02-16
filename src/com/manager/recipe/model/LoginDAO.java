@@ -4,28 +4,30 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.manager.recipe.controller.EIC;
+
 public class LoginDAO {
 
 	// Retrieve user data 
-	public boolean updateUser(String fullName, String username, String cellulare, String indirizzo, int idUtente) {
+	public boolean updateUser(String fullName, String cellulare, String indirizzo, int idUtente, String password) {
 		  	Connection con = null;
 		    PreparedStatement ps = null;
 		    int rs  = 0;
-		    try{  
+		    try{    
 		        con=DBManager.getConnection();  
-		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, username=?, cellulare=?, indirizzo=? where idUtente=?");  
+		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, password=?, cellulare=?, indirizzo=? where idUtente=?");  
 		        ps.setString(1, fullName);
-		        ps.setString(2, username);
+		        ps.setString(2, password);
 		        ps.setString(3, cellulare);
 		        ps.setString(4, indirizzo);
 		        ps.setInt(5, idUtente);
 		        rs=ps.executeUpdate();
 		        if(rs!=0) return true;
-		        
-		        }
+
+		    }
 		      catch(Exception ex) {
 		    	  System.out.println(ex);
-		      }
+		    }
 		    return false;
 		
 	}
@@ -65,6 +67,7 @@ public class LoginDAO {
 		        	System.out.println(rs.getString("password"));
 		        	sb.setIdUser(rs.getInt("idUtente"));
 		        	sb.setFullName(rs.getString("fullName"));
+		        	sb.setUsername(rs.getString("username"));
 		        	sb.setEmail(rs.getString("email"));
 		        	sb.setPassword(rs.getString("password"));
 		        	if(rs.getString("indirizzo")!=null)

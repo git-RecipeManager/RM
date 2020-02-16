@@ -38,14 +38,23 @@ public class ProfileServlet extends HttpServlet {
 		LoginBean lb=(LoginBean)session.getAttribute("customerBean");
 		//	Step 2: Retrieve post parameter and initialize some variable
 		String fullName = request.getParameter("fullName");
-		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		String password2=request.getParameter("password2");
 		String cellulare = (String)request.getParameter("cellulare");
 		String indirizzo = (String) request.getParameter("indirizzo");
 		int idUtente=Integer.parseInt((String)request.getParameter("idUtente"));
 		LoginDAO srdao = new LoginDAO();
+		try {
+			if(password!=null && password.equals(password2)) {
+				password = EIC.encrypt(password);
+			}
+		
+	}catch(NoSuchAlgorithmException ex) {
+		
+	}
 		
 		// Step 3:  Update user
-		boolean rb=srdao.updateUser(fullName, username, cellulare, indirizzo, idUtente);
+		boolean rb=srdao.updateUser(fullName, cellulare, indirizzo, idUtente,password);
 		// login fallito da parte dell'amministratore
 		if(!rb) {
 			
@@ -54,7 +63,7 @@ public class ProfileServlet extends HttpServlet {
 					}
 		else {
 			lb.setFullName(fullName);
-			lb.setUsername(username);
+			lb.setPassword(password);
 			lb.setCellulare(cellulare);
 			lb.setIndirizzo(indirizzo);
 			session.setAttribute("customerBean", lb);
