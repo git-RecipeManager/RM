@@ -1,45 +1,38 @@
 <%@ page import="com.manager.recipe.model.LoginBean" %>
-<%@ page import="com.manager.recipe.model.ListingProductBean" %>
+<%@ page import="com.manager.recipe.model.RecipeBean" %>
+<%@ page import="com.manager.recipe.model.RecipeDAO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
     pageEncoding="utf-8"  session="true" %>
 <%
-		Integer idUser = 0;
-		String email = "";
-  		String name = "";
-  		String sms = "";
-  		String surname = "";
-  		String tel1 ="";
-  		String tel2 ="";
-  		String indirizzo = "";
-  		String role = "";
-  		String codIstat= "";
-		Boolean flag = false;	
-		if ((session.getAttribute("customerBean") != null) && (session.getAttribute("message") != null)) {
-				LoginBean cb = (LoginBean) session.getAttribute("customerBean");
-				sms = (String)session.getAttribute("message");
-		 		idUser = cb.getIdUser();
-				email = cb.getEmail();
-		 		name = cb.getName();
-		 		surname = cb.getSurname();
-		 		tel1 = cb.getTelefono1();
-		 		tel2 = cb.getTelefono2();
-		 		indirizzo = cb.getIndirizzo();
-		 		role = cb.getRole();
-		 		codIstat = cb.getCittaIstat();
-		 					 		
-			}	
+Integer idUser = 0;
+String email = "";
+	String fullName = "";
+	String sms = "";
+	String cel ="";
+	String indirizzo="";
+	Integer role = 1;
+
+Boolean flag = false;	
+if ((session.getAttribute("customerBean") != null)) {
+		LoginBean cb = (LoginBean) session.getAttribute("customerBean");
+ 		idUser = cb.getIdUser();
+		email = cb.getEmail();
+ 		fullName = cb.getFullName();
+ 		cel = cb.getCellulare();
+ 		indirizzo = cb.getIndirizzo();
+ 		role = cb.getRole();		 					 		
+	}		
+if(session.getAttribute("message") != null)
+sms = (String)session.getAttribute("message");
 		
 		
 		/*  ***************************************************************************************************/
-		ArrayList<ListingProductBean> beanList= null;;
-	int size = 0;
-	if ((request.getAttribute("beanList") != null)) {
-		
-		 beanList = (ArrayList<ListingProductBean>)request.getAttribute("beanList");
+	 	 ArrayList<RecipeBean> beanList= null;
+		 RecipeDAO dao=new RecipeDAO();
+		 int size = 0;
+		 beanList = dao.findAllRecipes();
 		 size =  beanList.size();
-		 
-	}
 	
    %>
 <!doctype html>
@@ -56,7 +49,7 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/custom.css">
     
-   	<title>Extraordinary-Italy</title>
+   	<title>Recipe Manager</title>
   </head>
   <body>
   <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; display:none" class=" bg-sea-green fg.light-grey"><%= sms %></p>
@@ -218,7 +211,7 @@
 	</nav>
 	<nav class="navbar navbar-dark  navbar-expand-md bg-wine">	
 	 <div class="container">
-  <a class="navbar-brand" href="#">ExtraordinaryItaly.com</a>
+  <a class="navbar-brand" href="index.jsp">RecipeManager.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
   </button>
@@ -293,11 +286,14 @@ if(i== size-1)	round= false;
   if((i+3)%3 == 0){ %>
     <div class="col-md-4">
 	     <div id="beerItem" class="card">
-			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImgThumbProdotto()+"\""%> alt="Card image">
+			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImmagine()+"\""%> alt="Card image">
 			<div class="card-body">
-				<h4 class="card-title"><%= beanList.get(i).getNomeProdotto() %></h4>
-				<p style="text-align:justify;" class="card-text">"<%= beanList.get(i).getDescrizioneBreveProdotto() %></p>
-				<a href="#" style="color:white" class="btn bg-sea-green ">Vai Al Prodotto</a>
+				<h4 class="card-title"><%= beanList.get(i).getTitolo() %></h4>
+				<%if(beanList.get(i).getDescrizione().length()>50){%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione().subSequence(0, 50)+"..."%></p>
+				<%}else{%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione()+"..."%> <%}%></p>
+				<a href="#" style="color:white" class="btn bg-sea-green ">Vai alla Ricetta</a>
 	        </div>
 	    </div>
     </div>
@@ -305,11 +301,14 @@ if(i== size-1)	round= false;
     <% if((i+3)%3 == 1){ %>
     <div id="beerItem" class="col-md-4">
      	 <div class="  card">
-			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImgThumbProdotto()+"\""%> alt="Card image">
+			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImmagine()+"\""%> alt="Card image">
 			<div class="card-body">
-				<h4 class="card-title"><%= beanList.get(i).getNomeProdotto() %></h4>
-				<p style="text-align:justify; class="card-text">"<%= beanList.get(i).getDescrizioneBreveProdotto() %></p>
-				<a href="#" style="color:white" class="btn bg-sea-green ">Vai Al Prodotto</a>
+				<h4 class="card-title"><%= beanList.get(i).getTitolo() %></h4>
+				<%if(beanList.get(i).getDescrizione().length()>50){%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione().subSequence(0, 50)+"..."%></p>
+				<%}else{%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione()+"..."%> <%}%></p>
+				<a href="#" style="color:white" class="btn bg-sea-green ">Vai alla Ricetta</a>
 	        </div>
 	    </div>
     </div>
@@ -317,11 +316,14 @@ if(i== size-1)	round= false;
     <% if((i+3)%3 == 2){ %>
     <div class="col-md-4"> 
 		<div id="beerItem" class="card">
-			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImgThumbProdotto()+"\""%> alt="Card image">
+			<img class="rounded mx-auto d-block card-img-top img-thumbnail" src="<%="image/maincaruselimages/"+beanList.get(i).getImmagine()+"\""%> alt="Card image">
 			<div class="card-body">
-				<h4 class="card-title"><%= beanList.get(i).getNomeProdotto() %></h4>
-				<p style="text-align:justify; class="card-text">"<%= beanList.get(i).getDescrizioneBreveProdotto() %></p>
-				<a href="#" style="color:white" class="btn bg-sea-green ">Vai Al Prodotto</a>
+				<h4 class="card-title"><%= beanList.get(i).getTitolo() %></h4>
+				<%if(beanList.get(i).getDescrizione().length()>50){%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione().subSequence(0, 50)+"..."%></p>
+				<%}else{%>
+				<p style="text-align:justify; class="card-text"><%=beanList.get(i).getDescrizione()+"..."%> <%}%></p>
+				<a href="#" style="color:white" class="btn bg-sea-green ">Vai alla Ricetta</a>
 	        </div>
 	    </div>
     </div>

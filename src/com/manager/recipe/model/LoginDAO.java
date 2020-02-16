@@ -74,8 +74,8 @@ public class LoginDAO {
 		        	sb.setFullName(rs.getString("fullName"));
 		        	sb.setEmail(rs.getString("email"));
 		        	sb.setPassword(rs.getString("password"));
-		        	if(rs.getDate("dataDiNascita")!=null)
-		        	sb.setDataDiNascita(rs.getDate("dataDiNascita"));
+		        	if(rs.getString("indirizzo")!=null)
+		        	sb.setIndirizzo(rs.getString("indirizzo"));
 		        	if(rs.getDate("cellulare")!=null)
 		        	sb.setCellulare(rs.getString("cellulare"));
 		        	sb.setRole(rs.getInt("Ruolo_idRuolo"));

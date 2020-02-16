@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `RECIPEMANAGER`.`Utente` (
   `username` VARCHAR(90),
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(256) NOT NULL,
-  `dataDiNAscita` DATE NULL,
+  `indirizzo` VARCHAR(256) NULL,
   `cellulare` VARCHAR(18) NULL,
   `Ruolo_idRuolo` INT NOT NULL,
   PRIMARY KEY (`idUtente`),

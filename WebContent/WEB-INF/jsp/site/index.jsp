@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
-    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" import="java.time.LocalDate" session="true" %>
+    pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean"
+     import="java.time.LocalDate" import="java.util.ArrayList"
+     import="com.manager.recipe.model.RecipeDAO"
+     import="com.manager.recipe.model.RecipeBean" session="true" %>
 <%
 		Integer idUser = 0;
 		String email = "";
   		String fullName = "";
   		String sms = "";
   		String cel ="";
-  		LocalDate dataDiNascita = null;
+  		String indirizzo = "";
   		Integer role = 1;
 		
 		Boolean flag = false;	
@@ -16,11 +19,14 @@
 				email = cb.getEmail();
 		 		fullName = cb.getFullName();
 		 		cel = cb.getCellulare();
-		 		dataDiNascita = cb.getDataDiNascita();
+		 		indirizzo = cb.getIndirizzo();
 		 		role = cb.getRole();		 					 		
 			}		
 		if(session.getAttribute("message") != null)
 		sms = (String)session.getAttribute("message");
+		
+		if(request.getAttribute("messaggio")!=null)
+			sms = (String)request.getAttribute("messaggio");
    %>
 <!doctype html>
 <html lang="en">
@@ -61,7 +67,7 @@
    				    <i class="fas fa-user-cog fa-2x"></i>
   				 </a>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuUserSetting">
-				    <a class="dropdown-item" href="http://localhost:8080/extraordinary-italy.com/?page=profile">Profilo</a>
+				    <a class="dropdown-item" href="profile.jsp">Profilo</a>
 				    <a class="dropdown-item" href="add_recipe.jsp">Aggiungi Ricetta</a>
 				    <a class="dropdown-item" href="LogoutServlet">Logout</a>
 				  </div>
@@ -198,7 +204,7 @@
 	</nav>
 	<nav class="navbar navbar-dark  navbar-expand-md bg-wine">	
 	 <div class="container">
-  <a class="navbar-brand" href="#">recipemanager.com</a>
+  <a class="navbar-brand" href="index.jsp">RecipeManager.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
   </button>
@@ -281,40 +287,19 @@ if(request.getAttribute("main") == null){
   <!-- Qui i contenuto della slide  generato dal caricamento della pagina con jquery/ajax/json -->
   </div>
   <div style="text-align:center; margin-bottom:10em;">
-  	<a  href="#" class="badge bg-dark-wine cst-btn">SCOPRI</a>
+  	<a  href="lista-ricette.jsp" class="badge bg-dark-wine cst-btn">SCOPRI RICETTE</a>
   </div>
   
  
 
 </div>
-       <div id="sectionPolaroid">
-	  		<div class="polaroid">
-			  <img src="image/main/2019_01_21_08_56_46sales_product_bottles.png" alt="5 Terre" style="width:100%">
-			  <div class="containerp">
-			    <p>Birre</p>
-			  </div>
-			 </div>
-	   
-	  		<div class="polaroid">
-			  <img src="image/main/2019_01_21_08_56_38sales_product_assortment.png" alt="5 Terre" style="width:100%">
-			  <div class="containerp">
-			    <p>Confezioni Regalo</p>
-			  </div>
-			 </div>
-	  		<div class="polaroid">
-			  <img src="image/main/2019_01_21_08_57_02sales_product_glasses.png" alt="5 Terre" style="width:100%">
-			  <div class="containerp">
-			    <p>Bicchieri</p>
-			  </div>
-			 </div>
-	   
-	  		<div class="polaroid">
-			  <img src="image/main/2019_03_18_10_08_41product_bottles.png"  alt="5 Terre" style="width:75%;">
-			  <div class="containerp">
-			    <p> Novità </p>
-			  </div>
-			 </div>
-  		</div>
+       <!-- Inserimento immagini per lo slideshow -->
+       <%RecipeDAO rDao=new RecipeDAO();
+       		ArrayList<RecipeBean> lista=rDao.findAllRecipes();
+       	 for(RecipeBean rb: lista){%>
+       <img class="mySlides" src="<%=rb.getImmagine()%>" height="300" width="1000"> <%} %>
+       <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+	   <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
 </div>	
 
 
@@ -519,8 +504,7 @@ if(request.getAttribute("main") == null){
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script src="js/custom.js"></script>
     <% 
-if(session.getAttribute("message")!= null){ System.out.println(session.getAttribute("message"));%>
-
+if(session.getAttribute("message")!= null){%>
 <script>
 $( document ).ready(function() {
     $("#loginForm input[name='email']").val("");
@@ -533,7 +517,7 @@ $( document ).ready(function() {
 });
 </script>
 <%
-}else{ System.out.print("message e vuoto");%>
+}else{%>
 	
 	<script>
 $( document ).ready(function() {
@@ -547,6 +531,20 @@ $( document ).ready(function() {
 <% 
 }
 %>
+<script type="text/javascript">var slideIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 5000); // Change image every 5 seconds
+}</script>
   </body>
 </html>
 

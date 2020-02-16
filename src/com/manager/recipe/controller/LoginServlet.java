@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 		String password = null;
 		LoginBean sb = new LoginBean();
 		LoginDAO sldao = new LoginDAO();
-		Prompt pp = new Prompt();
 		try {
 				if(request.getParameter("password")!=null) {
 					password = EIC.encrypt(request.getParameter("password"));
@@ -53,14 +52,13 @@ public class LoginServlet extends HttpServlet {
 		// login fallito da parte dell'amministratore
 		if(sb == null) {
 				app.setAttribute("message", "user o password errata");
-				request.getRequestDispatcher("WEB-INF/jsp/site/index.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 
 			}else {
-				app.setAttribute("message", "user o password errata");
 				HttpSession session = request.getSession(true);
 				session.setAttribute("customerBean", sb);
-				session.setAttribute("message","Benvenuto ");
-				request.getRequestDispatcher("WEB-INF/jsp/site/index.jsp").forward(request, response);
+				session.setAttribute("message","Benvenuto "+sb.getUsername()+"!");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		
 		

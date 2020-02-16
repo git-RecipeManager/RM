@@ -48,11 +48,11 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public LocalDate getDataDiNascita() {
-	return dataDiNascita;
+public String getIndirizzo() {
+	return indirizzo;
 }
-public void setDataDiNascita(Date dataDiNascita) {
-	this.dataDiNascita = dataDiNascita.toLocalDate();
+public void setIndirizzo(String indirizzo) {
+	this.indirizzo = indirizzo;
 }
 public void setCellulare(String cellulare) {	
 	this.cellulare = cellulare;
@@ -67,6 +67,6 @@ private String username;
 private String email;
 private String password;
 private String cellulare;
-private LocalDate dataDiNascita;
+private String indirizzo;
 private int role;
 }
