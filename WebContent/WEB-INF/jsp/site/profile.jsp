@@ -203,8 +203,13 @@ if(request.getAttribute("main") == null){
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
+                             <label class="fg-sea-green" for="mobile"><h4>Email</h4></label>
+							 <input type="text" class="form-control" name="email" id="email" value="<%=email%>" readonly>  </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
                              <label class="fg-sea-green" for="mobile"><h4>Username</h4></label>
-							 <input type="text" class="form-control" name="username" id="username" value="<%=username%>">                          </div>
+							 <input type="text" class="form-control" name="username" id="username" value="<%=username%>" readonly>          </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
@@ -218,6 +223,16 @@ if(request.getAttribute("main") == null){
                               <label class="fg-sea-green" for="email"><h4>Indirizzo</h4></label>
                               <input type="text" class="form-control" id="indirizzo" name="indirizzo" value=" <%= indirizzo %>">
                           </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label class="fg-sea-green" for="mobile"><h4>Nuova Password</h4></label>
+							 <input type="password" class="form-control" name="password" id="password" value="">                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label class="fg-sea-green" for="mobile"><h4>Ripeti Password</h4></label>
+							 <input type="password" class="form-control" name="password2" id="password2" value="">                          </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">

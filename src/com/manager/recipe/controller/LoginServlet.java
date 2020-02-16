@@ -57,7 +57,9 @@ public class LoginServlet extends HttpServlet {
 			}else {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("customerBean", sb);
+				if(sb.getUsername()!=null && sb.getUsername()!="")
 				session.setAttribute("message","Benvenuto "+sb.getUsername()+"!");
+				else session.setAttribute("message","Benvenuto "+sb.getEmail().split("@")[0]+"!");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		
