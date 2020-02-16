@@ -1,35 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8/>"
     pageEncoding="utf-8" import="com.manager.recipe.model.LoginBean" session="true" %>
 <%
-		Integer idUser = 0;
-		String email = "";
-  		String name = "";
-  		String sms = "";
-  		String surname = "";
-  		String tel1 ="";
-  		String tel2 ="";
-  		String indirizzo = "";
-  		String role = "";
-  		String codIstat= "";
-  		
-		Boolean flag = false;	
-		if ((session.getAttribute("customerBean") != null) && (session.getAttribute("message") != null)) {
-				LoginBean cb = (LoginBean) session.getAttribute("customerBean");
-				sms = (String)session.getAttribute("message");
-		 		idUser = cb.getIdUser();
-				email = cb.getEmail();
-		 		name = cb.getName();
-		 		surname = cb.getSurname();
-		 		tel1 = cb.getTelefono1();
-		 		tel2 = cb.getTelefono2();
-		 		indirizzo = cb.getIndirizzo();
-		 		role = cb.getRole();
-		 		codIstat = cb.getCittaIstat();
-		 					 		
-			}		
+Integer idUser = 0;
+String email = "";
+	String fullName = "";
+	String sms = "";
+	String cel ="";
+	String indirizzo = "";
+	Integer role = 1;
+
+Boolean flag = false;	
+if ((session.getAttribute("customerBean") != null)) {
+		LoginBean cb = (LoginBean) session.getAttribute("customerBean");
+ 		idUser = cb.getIdUser();
+		email = cb.getEmail();
+ 		fullName = cb.getFullName();
+ 		cel = cb.getCellulare();
+ 		indirizzo = cb.getIndirizzo();
+ 		role = cb.getRole();		 					 		
+	}			
    %>
 <!doctype html>
-<html lang="it">
+<html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -42,13 +34,13 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/custom.css">
     
-   	<title>Extraordinary-Italy</title>
+   	<title>Recipe Manager</title>
   </head>
   <body>
   <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; display:none" class=" bg-sea-green fg.light-grey"><%= sms %></p>
     <!-- MENU ALTO -->
 	<nav class="navbar navbar-expand-sm" id="navbar-nav-1">  
-	  <!--  sx  Campo di ricerca, telefono, sèedizioni gratis -->
+	  <!--  sx  Campo di ricerca, telefono, spedizioni gratis -->
 	  <ul class="navbar-nav">
 		  <li>
 			  	 <form class="form-inline" action="/action_page.php">	
@@ -67,9 +59,9 @@
    				    <i class="fas fa-user-cog fa-2x"></i>
   				 </a>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuUserSetting">
-				    <a class="dropdown-item" href="#">Registrati</a>
-				    <a class="dropdown-item" href="http://localhost:8080/extraordinary-italy.com/?page=profile">Profilo</a>
-				    <a class="dropdown-item" href="CostumerLogout">Logout</a>
+				    <a class="dropdown-item" href="profile.jsp">Profilo</a>
+				    <a class="dropdown-item" href="add_recipe.jsp">Aggiungi Ricetta</a>
+				    <a class="dropdown-item" href="LogoutServlet">Logout</a>
 				  </div>
 			 </div>
 		</li>
@@ -134,7 +126,6 @@
 		</li>
 	</ul><!-- end sub menu cart  -->
 	
-	
 		<!-- Sub menu login Modal -->
 <div id="loginModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -148,12 +139,12 @@
                <div class="row">
                 	<div class="col-md-6 login-form-1">
                     	<h3>Accedi</h3>
-                    	<form   action="CustomerLoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
+                    	<form   action="LoginServlet"  method="POST" name="loginForm" id="loginForm" enctype="application/x-www-form-urlencoded">
 	                        <div class="form-group">
 	                            <input type="hidden" class="form-control"  name="role" value="customer" />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="text" class="form-control" placeholder="La tua Email" name="email" value="" />
+	                            <input type="text" class="form-control" placeholder="La tua Email o Username" name="user" value="" />
 	                        </div>
 	                        <div class="form-group">
 	                            <input type="password" class="form-control" placeholder="La tua Password" name="password" value="" />
@@ -173,21 +164,21 @@
                      </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Registrati</h3>
-                    <form action="SignUpControlServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
-                    	<div class="form-group">
-                    	    <input type="text" class="form-control" placeholder="Inserisci Nome e Cognome" name="fullName" value="" />
+                    <form action="RegistrationServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Inserisci un Username" name="username" value="" />
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Inserisci una Mail" name="email" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" id="registationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
+                            <input type="password" id="registrationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Re-Inserisci Password" name="password2" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="submit" class="btnSubmit" value="Registrati" />
                         </div>
                     </form>
                 </div>
@@ -197,14 +188,13 @@
     </div>
   </div>
 </div><!--  End sub menu login modal -->
-
 <!-- ************************************* END MENU ALTO  *****************************************   -->
 	
 	<!--MENU ALTO 2-->
 	</nav>
 	<nav class="navbar navbar-dark  navbar-expand-md bg-wine">	
 	 <div class="container">
-  <a class="navbar-brand" href="#">ExtraordinaryItaly.com</a>
+  <a class="navbar-brand" href="#">RecipeManager.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
   </button>
@@ -260,7 +250,13 @@
 if(request.getAttribute("main") == null){
 	request.setAttribute("main", "");
 }
-
+/*<div class="col-sm-3"><!--left col-->         
+		     <div class="text-center">
+		        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+		        <h6>Upload a different photo...</h6>
+		        <input type="file" class="text-center center-block file-upload">
+		      </div>
+     	</div><!--/col-3-->*/
 %>
 <%= request.getAttribute("main") %>
 
@@ -273,13 +269,6 @@ if(request.getAttribute("main") == null){
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-    	<div class="col-sm-3"><!--left col-->         
-		     <div class="text-center">
-		        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-		        <h6>Upload a different photo...</h6>
-		        <input type="file" class="text-center center-block file-upload">
-		      </div>
-     	</div><!--/col-3-->
     	<div class="col-sm-9">    
           <div class="tab-content">
             <div class="tab-pane active" id="home">
@@ -288,15 +277,8 @@ if(request.getAttribute("main") == null){
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label class="fg-sea-green" for="first_name"><h4>Nome</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" value="<%= name %>" >
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label class="fg-sea-green" for="last_name"><h4>Cognome</h4></label>
-                              <input type="text" class="form-control" name="last_name" value="<%=surname %>" id="last_name" >
+                              <label class="fg-sea-green" for="first_name"><h4>Nome e Cognome</h4></label>
+                              <input type="text" class="form-control" name="fullName" id="fullName" value="<%= fullName %>" >
                           </div>
                       </div>
           			 <div class="form-group">
@@ -307,24 +289,16 @@ if(request.getAttribute("main") == null){
                           </div>
                       </div>
                       <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label class="fg-sea-green"  for="phone"><h4>Telefono Casa</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" value="<%= tel1%>">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
                           <div class="col-xs-6">
                              <label class="fg-sea-green" for="mobile"><h4>Cellulare</h4></label>
-							 <input type="text" class="form-control" name="mobile" id="mobile" value="<%= tel2%>">                          </div>
+							 <input type="text" class="form-control" name="mobile" id="mobile" value="<%=cel%>">                          </div>
                       </div>
                      
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label class="fg-sea-green" for="email"><h4>Indirizzo</h4></label>
-                              <input type="email" class="form-control" id=" value=" <%= indirizzo %>">
+                              <label class="fg-sea-green" for="email"><h4>Data di Nascita</h4></label>
+                              <input type="text" class="form-control" id="indirizzo" value=" <%= indirizzo %>">
                           </div>
                       </div>
                       <div class="form-group">

@@ -65,7 +65,7 @@ public class RecipeServlet extends HttpServlet {
 			if(flag && flag2)
 				flag3=rhiDao.insert(dao.findRecipeIdByTitle(bean.getTitolo()), iDao.findIngredientIdByName(iBean.getNome()));
 			if(flag3)
-				pw.print("<p id='categoryMessage'>Inserimento avvenuto con successo</p>");
+				pw.print("<p id='categoryMessage'>Inserimento avvenuto con successo, ritorna alla </p>"+"<a href='index.jsp'> Home </a>");
 			else
 				pw.print("<p id='categoryMessage'>Errore operazione di inserimento avvenuto con successo</p>");
 

@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class RecipeDAO {
 
@@ -55,4 +56,33 @@ return flag;
 	    
 	return id;
 		}
+	
+public ArrayList<RecipeBean> findAllRecipes() {
+		
+		Connection con = null;
+	    PreparedStatement ps = null;
+	    int id = 0;
+	    Boolean flag = true;
+	    RecipeBean rb;
+	    ArrayList<RecipeBean> lista=new ArrayList<RecipeBean>();
+	    try{  
+	        con=DBManager.getConnection();  
+	        String sqlFind=" SELECT * from Ricetta";
+	        ps=con.prepareStatement(sqlFind);  
+	       	ResultSet rs = ps.executeQuery();
+	       	while(rs.next())
+	        {
+	       		rb=new RecipeBean();
+	       		rb.setIdRicetta(rs.getInt("idRicetta"));
+	       		rb.setTitolo(rs.getString("titolo"));
+	       		rb.setDescrizione(rs.getString("descrizione"));
+	       		rb.setImmagine(rs.getString("immagine"));
+	       		rb.setIdUtente(rs.getInt("Utente_idUtente"));
+	       		lista.add(rb);
+	        }
+	      }catch(SQLException ex) {
+	    	  System.out.println(ex);
+	      }
+	    return lista;
+}
 }

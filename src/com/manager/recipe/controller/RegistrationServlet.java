@@ -40,7 +40,6 @@ public class RegistrationServlet extends HttpServlet {
 		String password = null;
 		RegistrationBean rb = new RegistrationBean();
 		RegistrationDAO srdao = new RegistrationDAO();
-		Prompt pp = new Prompt();
 		try {
 				if(request.getParameter("password").equals(request.getParameter("password2")) && request.getParameter("password")!=null) {
 					password = EIC.encrypt(request.getParameter("password"));
