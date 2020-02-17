@@ -11,8 +11,10 @@ public class RegistrationDAO {
 	  	Connection con = null;
 	    PreparedStatement ps = null;
 	    ResultSet rs  = null;
+	    LoginDAO dao=new LoginDAO();
+	    if(!dao.checkClone(rb.getUserName()))
 	    try{  
-	        con=DBManager.getConnection();  
+	        con=DBManager.getConnection(); 
 	        ps=con.prepareStatement("INSERT INTO Utente(username,email,password,Ruolo_idRuolo) VALUES (?,?,?,?)");  
 	        ps.setString(1, rb.getUserName());
 	        ps.setString(2, rb.getEmail());
@@ -22,6 +24,7 @@ public class RegistrationDAO {
 	      }catch(Exception ex) {
 	    	  System.out.println(ex);
 	      }
+	    else return null;
 	    
 	    if(result!=0) return rb;
 	    else return null;

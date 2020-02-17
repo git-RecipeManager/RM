@@ -48,6 +48,7 @@ public class ProfileServlet extends HttpServlet {
 		try {
 			if(password!=null && password!="" && password.equals(password2)) {
 				password = EIC.encrypt(password);
+				password2=EIC.encrypt(password2);
 			}
 		
 	}catch(NoSuchAlgorithmException ex) {
@@ -55,12 +56,12 @@ public class ProfileServlet extends HttpServlet {
 	}
 		
 		// Step 3:  Update user
-		boolean rb=srdao.updateUser(fullName, cellulare, indirizzo, idUtente,password);
+		boolean rb=srdao.updateUser(fullName, cellulare, indirizzo, idUtente,password,password2);
 		// login fallito da parte dell'amministratore
 		if(!rb) {
 			
-			app.setAttribute("message", "modifica dati non andata a buon fine");
-			request.getRequestDispatcher("profile.jsp").forward(request, response);
+			session.setAttribute("message", "modifica dati non andata a buon fine");
+			response.sendRedirect("profile.jsp");
 					}
 		else {
 			lb.setFullName(fullName);

@@ -3,25 +3,30 @@ package com.manager.recipe.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.manager.recipe.controller.EIC;
 
 public class LoginDAO {
 
 	// Retrieve user data 
-	public boolean updateUser(String fullName, String cellulare, String indirizzo, int idUtente, String password) {
+	public boolean updateUser(String fullName, String cellulare, String indirizzo, int idUtente, String password, String password2) {
 		  	Connection con = null;
 		    PreparedStatement ps = null;
 		    int rs  = 0;
+		    if((!fullName.equals("null") || !(fullName.length()<=3) ||
+		       !cellulare.equals("null")|| !cellulare.contains("[a-zA-Z]+")||
+		       !indirizzo.equals("null")))
 		    try{    
-		        con=DBManager.getConnection();  
-		        if(password!=null && password!="") {
+		        con=DBManager.getConnection(); 
+		        if(password!=null && password!="" && password.equals(password2)) {
 		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, password=?, cellulare=?, indirizzo=? where idUtente=?");
 		        ps.setString(1, fullName);
 		        ps.setString(2, password);
 		        ps.setString(3, cellulare);
 		        ps.setString(4, indirizzo);
 		        ps.setInt(5, idUtente);
+		        rs=ps.executeUpdate();
 		        }
 		        else {
 		        	ps=con.prepareStatement("UPDATE Utente SET fullname=?, cellulare=?, indirizzo=? where idUtente=?");
@@ -29,13 +34,13 @@ public class LoginDAO {
 			        ps.setString(2, cellulare);
 			        ps.setString(3, indirizzo);
 			        ps.setInt(4, idUtente);
+			        rs=ps.executeUpdate();
 		        }
-		        rs=ps.executeUpdate();
 		        if(rs!=0) return true;
 
 		    }
 		      catch(Exception ex) {
-		    	  System.out.println(ex);
+		    	  ex.printStackTrace();
 		    }
 		    return false;
 		
@@ -85,5 +90,29 @@ public class LoginDAO {
 	    	ex.printStackTrace();
 	    }
 		return null;
+	}
+	
+	public boolean checkClone(String username)
+	{
+		Connection con = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs  = null;
+	    
+	    
+		try {
+			con=DBManager.getConnection();
+	        String sql="";
+	        sql ="SELECT * FROM Utente WHERE username = ?";
+	        ps=con.prepareStatement(sql);  
+	        ps.setString(1, username);
+	        rs=ps.executeQuery();
+	        if(rs.next()) return true;
+	        else return false;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} 
+		return false;
+
 	}
 }
