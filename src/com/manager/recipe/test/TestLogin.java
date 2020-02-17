@@ -2,6 +2,8 @@ package com.manager.recipe.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
@@ -26,11 +28,11 @@ class TestLogin {
    public void site_header_is_on_home_page() {   
        System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
-       browser.get("http://localhost:12419/RecipeManager/");       
-       WebElement user = browser.findElement(By.name("user"));
-       WebElement password=browser.findElement(By.name("password"));
+       browser.get("http://localhost:12419/RecipeManager/");    
+       WebElement user = browser.findElement(By.id("userLogin"));
+       WebElement password=browser.findElement(By.id("passwordLogin"));
        WebElement login= browser.findElement(By.id("btnModalLogin"));
-       user.sendKeys("andrea2@email.it");
+       user.sendKeys("andrea@email.it");
        password.sendKeys("ciaociao"); 
        login.click();
        String actualUrl="http://localhost:12419/RecipeManager/"; 

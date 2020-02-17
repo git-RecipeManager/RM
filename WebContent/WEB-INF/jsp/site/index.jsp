@@ -94,10 +94,10 @@
 	                            <input type="hidden" class="form-control"  name="role" value="customer" />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="text" class="form-control" placeholder="La tua Email o Username" name="user" value="" />
+	                            <input type="text" class="form-control" placeholder="La tua Email o Username" name="user" id="userLogin" value="" />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="password" class="form-control" placeholder="La tua Password" name="password" value="" />
+	                            <input type="password" class="form-control" placeholder="La tua Password" name="password" id="passwordLogin" value="" />
 	                        </div>
 	                        <div class="form-group">
 	                            <input type="submit" class="btnSubmit" name="btnLogin" id="btnModalLogin" value="Login" />
