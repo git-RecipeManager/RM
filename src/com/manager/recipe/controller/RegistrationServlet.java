@@ -63,7 +63,6 @@ public class RegistrationServlet extends HttpServlet {
 					}
 		else {
 			HttpSession session = request.getSession(true);
-			session.setAttribute("registrationBean", rb);
 			response.sendRedirect("LogoutServlet");
 		}
 	}

@@ -15,12 +15,21 @@ public class LoginDAO {
 		    int rs  = 0;
 		    try{    
 		        con=DBManager.getConnection();  
-		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, password=?, cellulare=?, indirizzo=? where idUtente=?");  
+		        if(password!=null && password!="") {
+		        ps=con.prepareStatement("UPDATE Utente SET fullname=?, password=?, cellulare=?, indirizzo=? where idUtente=?");
 		        ps.setString(1, fullName);
 		        ps.setString(2, password);
 		        ps.setString(3, cellulare);
 		        ps.setString(4, indirizzo);
 		        ps.setInt(5, idUtente);
+		        }
+		        else {
+		        	ps=con.prepareStatement("UPDATE Utente SET fullname=?, cellulare=?, indirizzo=? where idUtente=?");
+			        ps.setString(1, fullName);
+			        ps.setString(2, cellulare);
+			        ps.setString(3, indirizzo);
+			        ps.setInt(4, idUtente);
+		        }
 		        rs=ps.executeUpdate();
 		        if(rs!=0) return true;
 

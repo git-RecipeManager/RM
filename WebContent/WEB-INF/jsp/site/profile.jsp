@@ -21,6 +21,9 @@ if ((session.getAttribute("customerBean") != null)) {
  		indirizzo = cb.getIndirizzo();
  		role = cb.getRole();		 					 		
 	}			
+
+if(session.getAttribute("message") != null)
+	sms = (String)session.getAttribute("message");
    %>
 <!doctype html>
 <html lang="en">
@@ -221,7 +224,7 @@ if(request.getAttribute("main") == null){
                           
                           <div class="col-xs-6">
                               <label class="fg-sea-green" for="email"><h4>Indirizzo</h4></label>
-                              <input type="text" class="form-control" id="indirizzo" name="indirizzo" value=" <%= indirizzo %>">
+                              <input type="text" class="form-control" id="indirizzo" name="indirizzo" value="<%=indirizzo %>">
                           </div>
                       </div>
                       <div class="form-group">

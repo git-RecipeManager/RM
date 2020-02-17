@@ -45,7 +45,7 @@
    	<title>Recipe Manager</title>
   </head>
   <body>
-  <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; " class=" bg-sea-green fg.light-grey"><%= sms %></p>
+  <p id="messageBar" style=" text-align:center; ;position:relative; width:100%; height:2em; " class=" bg-sea-green fg.light-grey"><%=sms%></p>
     <!-- MENU ALTO -->
 	<nav class="navbar navbar-expand-sm" id="navbar-nav-1">  
 	  <!--  sx  Campo di ricerca, telefono, spedizioni gratis -->
@@ -442,9 +442,8 @@ $( document ).ready(function() {
  	 
 });
 </script>
-<% 
-}
-%>
+<% }%>
+
 <script type="text/javascript">var slideIndex = 0;
 carousel();
 

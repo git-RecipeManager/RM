@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.manager.recipe.model.CategoryBean;
@@ -31,6 +32,9 @@ public class RecipeServlet extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter pw =  response.getWriter();
 				Boolean flag=true,flag2 = true,flag3=true;
+				HttpSession session = request.getSession(true);
+				session.setAttribute("message", null);
+				request.setAttribute("messaggio", null);
 	    // Step 2: get parameter
 		 Part filePart = request.getPart("imgFullRicetta"); // Retrieves <input type="file" name="nomeRicetta">
 		 String iconaRicetta = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
@@ -64,12 +68,15 @@ public class RecipeServlet extends HttpServlet {
 			flag2=iDao.insertIngredient(iBean);
 			if(flag && flag2)
 				flag3=rhiDao.insert(dao.findRecipeIdByTitle(bean.getTitolo()), iDao.findIngredientIdByName(iBean.getNome()));
-			if(flag3)
-				pw.print("<p id='categoryMessage'>Inserimento avvenuto con successo, ritorna alla </p>"+"<a href='index.jsp'> Home </a>");
+			if(flag3) {
+				session.setAttribute("message", "Ricetta inserita con successo");
+				request.getRequestDispatcher("profile.jsp").forward(request, response);
+				}
 			else
-				pw.print("<p id='categoryMessage'>Errore operazione di inserimento avvenuto con successo</p>");
-
-				
+			{
+				session.setAttribute("message", "Qualcosa è andato storto! Ricetta non inserita");
+				request.getRequestDispatcher("profile.jsp").forward(request, response);
+			}
 			
 	}
 }

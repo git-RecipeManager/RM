@@ -74,9 +74,9 @@ sms = (String)session.getAttribute("message");
    				    <i class="fas fa-user-cog fa-2x"></i>
   				 </a>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuUserSetting">
-				    <a class="dropdown-item" href="#">Registrati</a>
-				    <a class="dropdown-item" href="http://localhost:8080/extraordinary-italy.com/?page=profile">Profilo</a>
-				    <a class="dropdown-item" href="CostumerLogout">Logout</a>
+				    <a class="dropdown-item" href="profile.jsp">Profilo</a>
+				    <a class="dropdown-item" href="add_recipe.jsp">Aggiungi Ricetta</a>
+				    <a class="dropdown-item" href="LogoutServlet">Logout</a>
 				  </div>
 			 </div>
 		</li>

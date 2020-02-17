@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 		// Step 1:  Set content type header response
 		response.setContentType("text/html");
 		ServletContext app = getServletContext();
+		request.setAttribute("messaggio", null);
 		//	Step 2: Retrieve post parameter and initialize some variable
 		String login = request.getParameter("user");
 		String password = null;

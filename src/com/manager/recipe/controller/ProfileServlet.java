@@ -35,6 +35,7 @@ public class ProfileServlet extends HttpServlet {
 		response.setContentType("text/html");
 		ServletContext app = getServletContext();
 		HttpSession session = request.getSession(true);
+		session.setAttribute("message", null);
 		LoginBean lb=(LoginBean)session.getAttribute("customerBean");
 		//	Step 2: Retrieve post parameter and initialize some variable
 		String fullName = request.getParameter("fullName");
@@ -45,7 +46,7 @@ public class ProfileServlet extends HttpServlet {
 		int idUtente=Integer.parseInt((String)request.getParameter("idUtente"));
 		LoginDAO srdao = new LoginDAO();
 		try {
-			if(password!=null && password.equals(password2)) {
+			if(password!=null && password!="" && password.equals(password2)) {
 				password = EIC.encrypt(password);
 			}
 		
