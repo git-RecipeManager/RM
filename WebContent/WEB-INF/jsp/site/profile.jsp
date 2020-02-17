@@ -201,41 +201,43 @@ if(request.getAttribute("main") == null){
                           <input type="hidden" name="idUtente" value=<%=idUser%>>
                           <div class="col-xs-6">
                               <label class="fg-sea-green" for="first_name"><h4>Nome e Cognome</h4></label>
-                              <input type="text" class="form-control" name="fullName" id="fullName" value="<%= fullName %>" >
+                              <input type="text"  required pattern="^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$" class="form-control" name="fullName" id="fullName" value="<%= fullName %>" >
                           </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
-                             <label class="fg-sea-green" for="mobile"><h4>Email</h4></label>
-							 <input type="text" class="form-control" name="email" id="email" value="<%=email%>" readonly>  </div>
+                             <label class="fg-sea-green" for="email"><h4>Email</h4></label>
+							 <input type="email" required class="form-control" name="email" id="email" value="<%=email%>" readonly>  </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
-                             <label class="fg-sea-green" for="mobile"><h4>Username</h4></label>
+                             <label class="fg-sea-green" required pattern"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" for="username"><h4>Username</h4></label>
 							 <input type="text" class="form-control" name="username" id="username" value="<%=username%>" readonly>          </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
-                             <label class="fg-sea-green" for="mobile"><h4>Cellulare</h4></label>
-							 <input type="text" class="form-control" name="cellulare" id="cellulare" value="<%=cel%>">                          </div>
+                             <label class="fg-sea-green" for="cell"><h4>Cellulare</h4></label>
+							 <input type="tel" required  pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" class="form-control" name="cellulare" id="cellulare" value="<%=cel%>">                          </div>
                       </div>
                      
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label class="fg-sea-green" for="email"><h4>Indirizzo</h4></label>
-                              <input type="text" class="form-control" id="indirizzo" name="indirizzo" value="<%=indirizzo %>">
+                              <label class="fg-sea-green" for="indirizzo"><h4>Indirizzo</h4></label>
+                              <input type="text" required pattern="[A-Za-z0-9'\.\-\s\,][10,50]"class="form-control" id="indirizzo" name="indirizzo" value="<%=indirizzo %>">
                           </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
-                             <label class="fg-sea-green" for="mobile"><h4>Nuova Password</h4></label>
+                             <label class="fg-sea-green" required  patterrn"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$
+                             "for="password"><h4>Nuova Password</h4></label>
 							 <input type="password" class="form-control" name="password" id="password" value="">                          </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
-                             <label class="fg-sea-green" for="mobile"><h4>Ripeti Password</h4></label>
-							 <input type="password" class="form-control" name="password2" id="password2" value="">                          </div>
+                             <label class="fg-sea-green" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$
+                             " for="password2"><h4>Ripeti Password</h4></label>
+							 <input type="password" required class="form-control" name="password2" id="password2" value="">                          </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
