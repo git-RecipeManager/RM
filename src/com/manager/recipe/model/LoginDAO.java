@@ -61,19 +61,11 @@ public class LoginDAO {
 	        	sql ="SELECT * FROM Utente WHERE username = ?";
 	        	ps=con.prepareStatement(sql);  
 		        ps.setString(1, sb.getUsername());
-	        }else throw new Exception("Eccezioneee");
+	        };
 	        rs=ps.executeQuery();
 	        if(rs.next()){
-	        	System.out.println(rs.getString("password"));
-	        	System.out.println(password);
-	        	System.out.println(rs.getString("email"));
-	        	System.out.println(email);
 	        	if(rs.getString("password").equals(password)) {
 	        		if(rs.getString("email").equals(email)||rs.getString("username").equals(username)) {
-	        		System.out.println(rs.getInt("idUtente"));
-		        	System.out.println(rs.getString("fullName"));
-		        	System.out.println(rs.getString("Ruolo_idRuolo"));
-		        	System.out.println(rs.getString("password"));
 		        	sb.setIdUser(rs.getInt("idUtente"));
 		        	sb.setFullName(rs.getString("fullName"));
 		        	sb.setUsername(rs.getString("username"));

@@ -20,6 +20,7 @@ import com.manager.recipe.model.LoginDAO;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletContext session;
  
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -29,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 		// Step 1:  Set content type header response
 		response.setContentType("text/html");
 		ServletContext app = getServletContext();
+		HttpSession session = request.getSession(true);
 		request.setAttribute("messaggio", null);
 		//	Step 2: Retrieve post parameter and initialize some variable
 		String login = request.getParameter("user");
@@ -52,11 +54,10 @@ public class LoginServlet extends HttpServlet {
 		sb=sldao.validateUser(sb);
 		// login fallito da parte dell'amministratore
 		if(sb == null) {
-				app.setAttribute("message", "user o password errata");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				session.setAttribute("message", "User o password errata, riprova");
+				response.sendRedirect("index.jsp");
 
 			}else {
-				HttpSession session = request.getSession(true);
 				session.setAttribute("customerBean", sb);
 				if(sb.getUsername()!=null && sb.getUsername()!="")
 				session.setAttribute("message","Benvenuto "+sb.getUsername()+"!");
