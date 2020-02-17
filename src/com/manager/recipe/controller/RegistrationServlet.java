@@ -58,11 +58,11 @@ public class RegistrationServlet extends HttpServlet {
 		// login fallito da parte dell'amministratore
 		if(rb == null) {
 			
-			app.setAttribute("message", "registrazione non andata a buon fine");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("message", "Utente gia presente nel db o registrazione fallita");
+			response.sendRedirect("index.jsp");
 					}
 		else {
-			HttpSession session = request.getSession(true);
 			response.sendRedirect("LogoutServlet");
 		}
 	}

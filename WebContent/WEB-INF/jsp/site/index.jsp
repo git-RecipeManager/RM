@@ -116,19 +116,19 @@
                     <h3>Registrati</h3>
                     <form action="RegistrationServlet" method="POST" id="registrationForm" enctype="application/x-www-form-urlencoded">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Inserisci un Username" name="username" value="" />
+                            <input type="text" class="form-control" placeholder="Inserisci un Username" name="username" id="userRegistrazione" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Inserisci una Mail" name="email" value="" />
+                            <input type="text" class="form-control" placeholder="Inserisci una Mail" name="email" id="emailRegistrazione" value="" />
                         </div>
                         <div class="form-group">
                             <input type="password" id="registrationPassword" class="form-control" placeholder="Inserisci una Password" name="password" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Re-Inserisci Password" name="password2" value="" />
+                            <input type="password" class="form-control" placeholder="Re-Inserisci Password" name="password2" id="passwordRegistrazione2" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Registrati" />
+                            <input type="submit" class="btnSubmit" id="btnModalRegistration" value="Registrati" />
                         </div>
                     </form>
                 </div>

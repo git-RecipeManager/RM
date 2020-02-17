@@ -78,12 +78,6 @@ class TestLogin {
        System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
        browser.get("http://localhost:12419/RecipeManager/");    
-<<<<<<< HEAD
-       WebElement user = browser.findElement(By.id("userLogin"));
-       WebElement password=browser.findElement(By.id("passwordLogin"));
-       WebElement login= browser.findElement(By.id("btnModalLogin"));
-       user.sendKeys("andrea@email.it");
-=======
        WebElement areaLogin=browser.findElement(By.id("btnUserLock"));
        areaLogin.click();
        WebElement user = browser.findElement(By.id("userLogin"));
@@ -112,7 +106,6 @@ class TestLogin {
        WebElement password=wait.until(ExpectedConditions.elementToBeClickable(By.id("passwordLogin")));
        WebElement login= browser.findElement(By.id("btnModalLogin"));
        user.sendKeys("andrea@email.it");
->>>>>>> 003f6d049aad456273cbad6abcd71d9714b0ccd1
        password.sendKeys("ciaociao"); 
        login.click();
        String expectedUrl="http://localhost:12419/RecipeManager/LoginServlet"; 
