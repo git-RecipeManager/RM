@@ -196,7 +196,7 @@ if(request.getAttribute("main") == null){
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="ProfileServlet" method="post" id="registrationForm">
+                  <form class="form" action="ProfileServlet"  method="post" id="registrationForm">
                       <div class="form-group">
                           <input type="hidden" name="idUtente" value=<%=idUser%>>
                           <div class="col-xs-6">
@@ -217,7 +217,7 @@ if(request.getAttribute("main") == null){
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label class="fg-sea-green" for="cell"><h4>Cellulare</h4></label>
-							 <input type="tel" required  pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" class="form-control" name="cellulare" id="cellulare" value="<%=cel%>">                          </div>
+							 <input type="tel" required  pattern="^[0-9\-\+]{9,15}$" class="form-control" name="cellulare" id="cellulare" value="<%=cel%>">                          </div>
                       </div>
                      
                       <div class="form-group">
@@ -231,18 +231,18 @@ if(request.getAttribute("main") == null){
                           <div class="col-xs-6">
                              <label class="fg-sea-green" required  patterrn"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$
                              "for="password"><h4>Nuova Password</h4></label>
-							 <input type="password" class="form-control" name="password" id="password" value="">                          </div>
+							 <input type="password" class="form-control" name="password" id="password" value="" >                          </div>
                       </div>
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label class="fg-sea-green" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$
                              " for="password2"><h4>Ripeti Password</h4></label>
-							 <input type="password" required class="form-control" name="password2" id="password2" value="">                          </div>
+							 <input type="password" class="form-control" name="password2" id="password2" value="">                          </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button style="color:white;" class="btn btn-lg bg-sea-green" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Salva</button>
+                              	<button style="color:white;" class="btn btn-lg bg-sea-green" id="salva" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Salva</button>
                             </div>
                       </div>
               	</form>
