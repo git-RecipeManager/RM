@@ -33,6 +33,7 @@ sms = (String)session.getAttribute("message");
 		 int size = 0;
 		 beanList = dao.findAllRecipes();
 		 size =  beanList.size();
+		 System.out.println("size:"+size);
 	
    %>
 <!doctype html>
@@ -198,8 +199,10 @@ Boolean round= true;
 <div class="container flex.product-list">
 <%while(round){%>
   <div class="row">
-<% for(int i = 0; i<size;i++){
-if(i== size-1)	round= false;
+<% if(size==0)	round= false;
+for(int i = 0; i<size;i++){
+	if(i== size)	round= false;
+	System.out.println("i:"+i+" size:"+size);
   if((i+3)%3 == 0){ %>
     <div class="col-md-4">
 	     <div id="beerItem" class="card">

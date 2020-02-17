@@ -70,12 +70,12 @@ public class RecipeServlet extends HttpServlet {
 				flag3=rhiDao.insert(dao.findRecipeIdByTitle(bean.getTitolo()), iDao.findIngredientIdByName(iBean.getNome()));
 			if(flag3) {
 				session.setAttribute("message", "Ricetta inserita con successo");
-				request.getRequestDispatcher("profile.jsp").forward(request, response);
+				request.getRequestDispatcher("add_recipe.jsp").forward(request, response);
 				}
 			else
 			{
 				session.setAttribute("message", "Qualcosa è andato storto! Ricetta non inserita");
-				request.getRequestDispatcher("profile.jsp").forward(request, response);
+				request.getRequestDispatcher("add_recipe.jsp").forward(request, response);
 			}
 			
 	}
