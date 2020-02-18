@@ -26,11 +26,6 @@ class TestRegistrazione {
    void setUp() {
    }
 
-   @BeforeEach
-   void tearDown() {
-	   
-   }
-
    @Test
    public void testRegistrazione1() {   
        System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
@@ -249,6 +244,11 @@ class TestRegistrazione {
        Assert.assertEquals(expectedUrl,actualUrl);
        browser.close();
        browser.quit();
+   }
+
+@BeforeEach
+   void tearDown() {
+	   
    }
    
    

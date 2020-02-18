@@ -54,7 +54,9 @@ public class LoginServlet extends HttpServlet {
 		sb=sldao.validateUser(sb);
 		// login fallito da parte dell'amministratore
 		if(sb == null) {
+			
 				session.setAttribute("message", "User o password errata, riprova");
+				session.setAttribute("messaggio", "true");
 				response.sendRedirect("index.jsp");
 
 			}else {
@@ -62,6 +64,7 @@ public class LoginServlet extends HttpServlet {
 				if(sb.getUsername()!=null && sb.getUsername()!="")
 				session.setAttribute("message","Benvenuto "+sb.getUsername()+"!");
 				else session.setAttribute("message","Benvenuto "+sb.getEmail().split("@")[0]+"!");
+				session.setAttribute("messaggio", "false");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		

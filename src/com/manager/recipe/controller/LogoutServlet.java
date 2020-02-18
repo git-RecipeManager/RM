@@ -25,7 +25,6 @@ private static final long serialVersionUID = 1L;
 		response.setContentType("text/html");
 		  HttpSession session=request.getSession();  
         session.invalidate(); 
-        request.setAttribute("messaggio", "Benvenuto su RecipeManager! Per favore esegui l'accesso");
         request.getRequestDispatcher("index.jsp").forward(request, response);
 	}	
 }

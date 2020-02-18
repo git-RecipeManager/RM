@@ -179,15 +179,15 @@ $(document).ready(function(){
     var active = "active";
 	var setting ={
 			       type:"GET",
-			       url:"http://localhost:8080/extraordinary-italy.com/json/main_carusel_content.json",
+			       url:"json/main_carusel_content.json",
 			       contentType: "application/x-www-form-urlencoded;charset=utf-8",
 			       dataType:"json",
 			       success:function(result){
 					    $.each(result.mainSlide, function(i, field){
 					    	if(i > 0) active = "";
 					    	html+='<div class="carousel-item '+active+'">'+
-					    				'<h3 class="fg-sea-green" style="text-align:center; position:relative;top:1.5em;">'+field.header+'</h3>'+
-					    			    '<div><img  src="image/maincaruselimages/'+field.img_src+'" class="'+field.img_class+'" alt="'+field.img_alt+'"/>'+
+					    				'<h3 class="fg-sea-green" style="text-align:center; position:relative;top:1.5em; margin-left:70px;">'+field.header+'</h3>'+
+					    			    '<div><img  src="image/maincaruselimages/'+field.img_src+'"style="margin-right:50px;" width="200" heigth="300" class="'+field.img_class+'" alt="'+field.img_alt+'"/>'+
 					    				      '<p class="fg-light-grey" style="position:relative; top:2.5em;">'+field.description+'</p></div>'+
 					    		   '</div>';
 					    });

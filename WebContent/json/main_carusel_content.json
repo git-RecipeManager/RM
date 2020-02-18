@@ -1,74 +1,33 @@
 {
   "mainSlide": [
     {
-      "img_src": "10296-22369-w200-h250-white.jpg",
-      "img_alt": "UNA BIRRA FUORI DAL COMUNE, ORIGINALE E COMPLESSA.",
+      "img_src": "carbonara.jpg",
+      "img_alt": "Spaghetti Rigati Alla Carbonare",
       "img_class": "mci",
-      "header": "BIRRA DEL BORGO ETRUSCA",
-      "description": "Per la birra Etrusca, il mastro birraio di Del Borgo,Leonardo Di Vincenzo con due compatrioti Teo Musso e Sam Calagione sono partiti alla ricerca dell'origine della birra basandosi su prodotti fermentati che possono aver inspirato questa famosa bevanda. Fermentata con numerosi ingredienti non abituali per una birra come ad esempio nocciola, melograno, miele o resina, questa birra ha inoltre beneficiato della fermentazione in vaso di terracotta."
+      "header": "SPAGHETTI RIGATI ALLA CARBONARA",
+      "description": "La ricetta degli spaghetti alla carbonara è tipica del Lazio ed è apprezzata in tutto il mondo grazie alla sua semplicità, facilità e bontà! Il Vicolo della Scrofa, per chi conosce Roma, è una delle stradine più caratteristiche e ricche di simboli. Proprio in una trattoria di questa strada, da cui il nome del vicolo, pare sia stata realizzata la prima Carbonara, nel 1944."
     },
-    {
-      "img_src": "29173-41854-w200-h250-white.jpg",
-      "img_alt": "UNA STOUT ORIGINALE E MOLTO COMPLESSA PREPARATA CON OSTRICHE",
+     {
+      "img_src": "arrosto-di-vitello-al-forno.jpg",
+      "img_alt": "Arrosto di vitello al forno",
       "img_class": "mci",
-      "header": "BIRRA DEL BORGO PERLE AI PORCI",
-      "description": "Il birrificio Birra Del Borgo continua a sorprenderci. Per il lancio del Beer Festival a Roma, il birrificio italiano ha prodotto una birra straordinaria con ostriche: una Oyster Stout! Perle Ai Porci si presenta con un bellissimo vestito nero, tirando su toni marroni. Ãˆ poi coperto da una spumeggiante schiuma bianchissima. Al naso si percepiscono aromi di malto tostato, cacao, caramello e caffÃ¨. Il suo corpo Ã¨ forte con una consistenza oleosa e una leggera carbonatazione per un finale grigliato e salato. Una delizia!"
+      "header": "Arrosto di vitello Al forno",
+      "description": "Preparare un buon Arrosto di vitello al forno con patate forse può sembrare complicato, ma non è così. Una delle cose più importanti per ottenere un arrosto morbido e succoso è la scelta della carne, che deve essere di buona qualità e non essere eccessivamente magra. Questo scongiurerà il rischio di avere un arrosto secco e stopposo."
     },
-    {
-      "img_src": "7056-13859-w200-h250-white.jpg",
-      "img_alt": "LA BIRRA DEL BORGO ORTODOSSA KETO REPORTER, STILE PORTER AROMATIZZATA AL TABACCO. ",
+     {
+      "img_src": "carbonara.jpg",
+      "img_alt": "Spaghetti Rigati Alla Carbonare",
       "img_class": "mci",
-      "header": "BIRRA DEL BORGO KETO REPORTER",
-      "description": "Il giovane birrificio italiano Del Borgo ci gratifica con una Porter speciale e alquanto inusuale, dal momento che la Keto Reporter Ã¨ aromatizzata al tabacco. Nel bicchiere, questa Porter sfoggia un piccolo cappello di schiuma bruna, al di sopra di un abito di colore bruno scuro  con riflessi rossi. Al naso offre aromi  di malto  tostato, di tabacco e di chicchi di caffÃ¨ torrefatti. Al palato, il sapore Ã¨ leggermente acido con note di malto torrefatto, di tabacco, nonchÃ© di fumo, che piacerÃ  certamente di piÃ¹ ai fumatori che ai non fumatori. La consistenza Ã¨ spessa e oleosa. "
+      "header": "SPAGHETTI RIGATI ALLA CARBONARA",
+      "description": "Se diciamo polpo qual è il primo ingrediente che vi viene in mente di accostare? Senza dubbio le patate! L’insalata tiepida di polpo e patate è infatti un piatto estivo della nostra tradizione che non passa mai di moda, una pietanza che esalta con semplicità i sapori mediterranei. Teneri cubetti di polpo e di patate, una cascata di profumatissimo e fresco prezzemolo e per finire il tocco aromatico di una citronette che insaporisce questa corposa insalata, così ricca e nutriente"
     },
-    {
-      "img_src": "6883-14306-w200-h250-white.jpg",
-      "img_alt": "LA REALE DEL BIRRIFICIO DEL BORGO Ã‰ UNA BIRRA ITALIANA DI STILE IPA ISPIRATA ALL'INDIA ",
+     {
+      "img_src": "Insalata-di-polpo-e-patate-alla-tellarese.jpg",
+      "img_alt": "Insalata-di-polpo-e-patate-alla-tellarese.jpg",
       "img_class": "mci",
-      "header": "BIRRA DEL BORGO RE ALE EXTRA",
-      "description": "Il successo della ReAle ha spinto il birrificio italiano Del Borgo a creare una variante chiamata ReAle Extra. Per questa American Pale Ale viene utilizzata una quantitÃ  enorme di luppolo, che arriva al triplo di quella impiegata per la sua sorella piÃ¹ piccola, la ReAle. Al naso si rivela resinosa con note di agrumi, di pino, di malto, di caramello e di luppolo. Con un IBU di 70, un corpo medio, una consistenza oleosa e una carbonatazione leggera, Ã¨ una birra da consumare a una temperatura compresa tra 10Â° e 12Â° C. "
-    },
-    {
-      "img_src": "27704-49880-w200-h250-white.jpg",
-      "img_alt": "Birra Dedicata alla nascita dellâ€™ultimo sigaro Toscano",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO MALEDETTA",
-      "description": "Si tratta di una variante della ReAle, piÃ¹ leggera e beverina. Nasce come una crasi della cultura Belga con quella Anglosassone. Il colore Ã¨ quello dellâ€™ambra, coronata da un bel cappello di schiuma color nocciola. Al naso si sviluppano note che vanno dallâ€™agrumato al floreale con grande intensitÃ , ma Ã¨ presente anche lâ€™aroma del malto e una punta dolce proveniente dal caramello. In bocca, dopo un primo ingresso mielato, percepiamo il caramello che evolve nellâ€™agrumato e va a fondersi con una piacevolissima nota amara e speziata.  "
-    },
-    {
-      "img_src": "10305-22372-w200-h250-white.jpg",
-      "img_alt": "UNA BIRRA DOLCE E COMPLESSA CHE SVELA DELLE NOTE PEPATE, BOSCOSE E FLOREALI.",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO GENZIANA",
-      "description": "La Saracena che nasce dalla collaborazione tra Birra del Borgo e l'Azienda Agricola Poggi di Gabriele Poggi, Ã¨ una birra con un'elevata percentuale di grano saraceno coltivato proprio dall'Azienda Agricola Poggi, maltato da una piccola malteria e tagliato con malto d'orzo e grano senatore cappelli. malteria e tagliato con malto d'orzo e grano senatore cappelli. Si presenta di colore dorato lievemente velato, con schiuma chiara e compatta. Il grano saraceno ne caratterizza l'aroma, con piaceri sentori di cereali, lievito e fresche sfumature erbacee. "
-    },
-    {
-      "img_src": "31742-45765-w200-h250-white.jpg",
-      "img_alt": "Birra di colore dorato lievemente velato, con schiuma chiara e compatta.",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO LA SARACENA",
-      "description": "Ãˆ una birra con un'elevata percentuale di grano saraceno e grano senatore cappelli"
-    },
-    {
-      "img_src": "33091-48790-w200-h250-white.jpg",
-      "img_alt": "MPERIAL STOUT INVECCHIATO IN BOTTI DI ACETO BALSAMICO PER UN SAPORE DI TANNINO ACIDO E LEGNOSO.",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO LOST BARREL",
-      "description": "Birra del Borgo Collerosso Lost Barrel Ã¨ un Sour Imperial Stout profondamente aromatico invecchiato in botti di aceto balsamico per una maestosa nota legnosa. Il corpo ricco e morbido evoca Flanders Brown Ale, con note di legno aspre e frutta rossa dolce e tannini di quercia polverosi, che conferiscono un tocco amaro al finale di aceto balsamico."
-    },
-    {
-      "img_src": "7055-15724-w200-h250-white.jpg",
-      "img_alt": "MY ANTONIA Ã‰ IL NOME DI UNA DONNA CHE SI DISTINGUE PER UN PO PIÃ™ DI DOLCEZZA TRA I PRODOTTI DEL BORGO. ",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO MY ANTONIA",
-      "description": "My Antonia Ã¨ una birra collaborativa tra il recente, ma non meno talentuoso, birrificio italiano Birra Del Borgo e il birrificio americano Craft Beers Dogfish Head. Questa birra bionda, dal colore arancione dorato nel bicchiere, con una schiuma bianca abbondante, Ã¨ di tipo Imperial Pilsner.Possiede gradevoli profumi di malto e luppolo,  fiori, pompelmo e agrumi. In bocca, i gusti di questa Imperial Pilsner riprendono gli aromi appena descritti: gli agrumi, le note floreali dei luppoli che chiudono su un finale amaro persistente e piacevole. "
-    },
-    {
-      "img_src": "27702-40004-w200-h250-white.jpg",
-      "img_alt": "Birra di colore dorato lievemente velato, con schiuma chiara e compatta.",
-      "img_class": "mci",
-      "header": "BIRRA DEL BORGO FRAGUS",
-      "description": "Birra creata utilizzando come base una delle piÃ¹ famose delle birre di Birra del Borgo, la Duchessa. Come suggerisce il nome, la Fragus viene prodotta aggiungendo alla Duchessa 100 grammi/litro di fragole fresche.  La freschezza e l'aciditÃ  delle fragole si presenta sia al naso che al gusto."
-    }
+      "header": "INSALATA DI POLPO E PATATE",
+      "description": "La ricetta degli spaghetti alla carbonara è tipica del Lazio ed è apprezzata in tutto il mondo grazie alla sua semplicità, facilità e bontà! Il Vicolo della Scrofa, per chi conosce Roma, è una delle stradine più caratteristiche e ricche di simboli. Proprio in una trattoria di questa strada, da cui il nome del vicolo, pare sia stata realizzata la prima Carbonara, nel 1944."
+    }  
+   
   ]
 }

@@ -61,6 +61,7 @@ public class ProfileServlet extends HttpServlet {
 		if(!rb) {
 			
 			session.setAttribute("message", "modifica dati non andata a buon fine");
+			session.setAttribute("messaggio", "true");
 			response.sendRedirect("profile.jsp");
 					}
 		else {
@@ -70,6 +71,7 @@ public class ProfileServlet extends HttpServlet {
 			lb.setIndirizzo(indirizzo);
 			session.setAttribute("customerBean", lb);
 			session.setAttribute("message", "Dati inseriti con successo");
+			session.setAttribute("messaggio", "false");
 			request.getRequestDispatcher("profile.jsp").forward(request, response);
 		}
 	}

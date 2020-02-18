@@ -18,6 +18,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import jdk.nashorn.internal.runtime.logging.Logger;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 class TestLogin {
@@ -33,9 +35,9 @@ class TestLogin {
 
    @Test
    public void testLogin() {   
-       System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
+       System.setProperty("webdriver.chrome.driver","C:\\Users\\GAETANO\\Desktop\\INGEGNERIA DEL SOFTWARE\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
-       browser.get("http://localhost:12419/RecipeManager/");    
+       browser.get("http://localhost:8080/RecipeManager/");    
        WebElement areaLogin=browser.findElement(By.id("btnUserLock"));
        areaLogin.click();
        WebElement user = browser.findElement(By.id("userLogin"));
@@ -45,7 +47,7 @@ class TestLogin {
        user.sendKeys("");
        password.sendKeys(""); 
        login.click();
-       String expectedUrl="http://localhost:12419/RecipeManager/LoginServlet"; 
+       String expectedUrl="http://localhost:8080/RecipeManager/LoginServlet"; 
        String actualUrl= browser.getCurrentUrl(); 
        Assert.assertEquals(expectedUrl,actualUrl);
        browser.close();
@@ -54,9 +56,9 @@ class TestLogin {
    
    @Test
    public void testLogin2() {   
-       System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
+       System.setProperty("webdriver.chrome.driver","C:\\Users\\GAETANO\\Desktop\\INGEGNERIA DEL SOFTWARE\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
-       browser.get("http://localhost:12419/RecipeManager/");    
+       browser.get("http://localhost:8080/RecipeManager/");    
        WebElement areaLogin=browser.findElement(By.id("btnUserLock"));
        areaLogin.click();
        WebElement user = browser.findElement(By.id("userLogin"));
@@ -66,18 +68,17 @@ class TestLogin {
        user.sendKeys("andrea#email.it");
        password.sendKeys(""); 
        login.click();
-       String expectedUrl="http://localhost:12419/RecipeManager/LoginServlet"; 
+       String expectedUrl="http://localhost:8080/RecipeManager/LoginServlet"; 
        String actualUrl= browser.getCurrentUrl(); 
        Assert.assertEquals(expectedUrl,actualUrl);
        browser.close();
        browser.quit();
    }
-   
    @Test
    public void testLogin3() {   
-       System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
+       System.setProperty("webdriver.chrome.driver","C:\\Users\\GAETANO\\Desktop\\INGEGNERIA DEL SOFTWARE\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
-       browser.get("http://localhost:12419/RecipeManager/");    
+       browser.get("http://localhost:8080/RecipeManager/");    
        WebElement areaLogin=browser.findElement(By.id("btnUserLock"));
        areaLogin.click();
        WebElement user = browser.findElement(By.id("userLogin"));
@@ -87,7 +88,7 @@ class TestLogin {
        user.sendKeys("andrea@email.it");
        password.sendKeys("sbagliata"); 
        login.click();
-       String expectedUrl="http://localhost:12419/RecipeManager/LoginServlet"; 
+       String expectedUrl="http://localhost:8080/RecipeManager/LoginServlet"; 
        String actualUrl= browser.getCurrentUrl(); 
        Assert.assertEquals(expectedUrl,actualUrl);
        browser.close();
@@ -96,9 +97,9 @@ class TestLogin {
    
    @Test
    public void testLogin4() {   
-       System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");   
+       System.setProperty("webdriver.chrome.driver","C:\\Users\\GAETANO\\Desktop\\INGEGNERIA DEL SOFTWARE\\chromedriver.exe");   
        WebDriver browser = new ChromeDriver();
-       browser.get("http://localhost:12419/RecipeManager/");    
+       browser.get("http://localhost:8080/RecipeManager/");    
        WebElement areaLogin=browser.findElement(By.id("btnUserLock"));
        areaLogin.click();
        WebElement user = browser.findElement(By.id("userLogin"));
@@ -108,7 +109,7 @@ class TestLogin {
        user.sendKeys("andrea@email.it");
        password.sendKeys("ciaociao"); 
        login.click();
-       String expectedUrl="http://localhost:12419/RecipeManager/LoginServlet"; 
+       String expectedUrl="http://localhost:8080/RecipeManager/LoginServlet"; 
        String actualUrl= browser.getCurrentUrl(); 
        Assert.assertEquals(expectedUrl,actualUrl);
        browser.close();

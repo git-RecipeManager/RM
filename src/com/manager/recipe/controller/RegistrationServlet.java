@@ -60,6 +60,7 @@ public class RegistrationServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("message", "Utente gia presente nel db o registrazione fallita");
+			session.setAttribute("messaggio", "true");
 			response.sendRedirect("index.jsp");
 					}
 		else {

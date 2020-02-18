@@ -32,9 +32,7 @@ sms = (String)session.getAttribute("message");
 		 RecipeDAO dao=new RecipeDAO();
 		 int size = 0;
 		 beanList = dao.findAllRecipes();
-		 size =  beanList.size();
-		 System.out.println("size:"+size);
-	
+		 size =  beanList.size();	
    %>
 <!doctype html>
 <html lang="en">
@@ -469,29 +467,47 @@ for(int i = 0; i<size;i++){
     <script src="js/bootstrap.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script src="js/custom.js"></script>
-<% if(session.getAttribute("message")!= null){%>
+<% if(session.getAttribute("message")!=null && session.getAttribute("messaggio").equals("false")){%>
 <script>
-$( document ).ready(function() {
-    $("#loginForm input[name='email']").val("");
-	   $("#loginForm input[name='password']").val("");
-	   $("#loginForm input[name='optradio']").prop("checked",false);
- 	   $("#messageBar").css("display","block");
- 	  $(".fa-user-lock").css("display","none");
- 	 $("#dropdownMenuUserSetting").css("display","block");
- 	 
-});
+$( document ).ready(function() 
+		{
+		    $("#loginForm input[name='email']").val("");
+			   $("#loginForm input[name='password']").val("");
+			   $("#loginForm input[name='optradio']").prop("checked",false);
+		 	   $("#messageBar").css("display","block");
+		 	  $(".fa-user-lock").css("display","none");
+		 	 $("#dropdownMenuUserSetting").css("display","block");
+		 	<%session.setAttribute("messaggio","null");%>
+ 	 	});
 </script>
-<% }else{ %>
+<%}else if(session.getAttribute("message")!=null && session.getAttribute("messaggio").equals("true")){%>
 <script>
 $( document ).ready(function() {
-      
- 	   $("#messageBar").css("display","none");
+ 	   $("#messageBar").css("display","block");
  	  $(".fa-user-lock").css("display","block");
  	 $("#dropdownMenuUserSetting").css("display","none");
+ 	<%session.setAttribute("messaggio","null");%>
  	 
 });
 </script>
-<% } %>
+<%} else if(session.getAttribute("message")!=null && session.getAttribute("messaggio").equals("null")){%>
+    <script>
+    $( document ).ready(function() {
+    	$("#messageBar").css("display","none");
+    	  $(".fa-user-lock").css("display","none");
+    	 $("#dropdownMenuUserSetting").css("display","block");
+    });
+    </script>
+
+<%} else {%>
+    <script>
+    $( document ).ready(function() {
+    	$("#messageBar").css("display","none");
+    	  $(".fa-user-lock").css("display","block");
+    	 $("#dropdownMenuUserSetting").css("display","none");
+    }); <%}%>
+    </script>
+
   </body>
 </html>
 
